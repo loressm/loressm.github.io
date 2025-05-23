@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUI media – Social Media Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="script.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="header.js" defer></script>
+</head>
+<body>
+    <header id="header"></header>
+
+    <main>
+        <section class="content-grid">
+            <!-- Blocco 1: Testo -->
+            <div class="grid-item animate-on-scroll">
+                <h3 style="background-color: #FFD700; color: white; padding: 10px;">Promuovi la tua azienda sui social</h3>
+                <p>Sei una piccola azienda, un* freelance o un progetto culturale e vuoi raccontarti meglio sui social? Sei nel posto giusto. Aiuto realtà come la tua a comunicare con autenticità e creatività.</p>
+            </div>
+
+            <!-- Blocco 2: Immagine -->
+            <div class="grid-item">
+                <img src="img/strategia-social.jpg" alt="Strategia social">
+            </div>
+
+            <!-- Blocco 3: Testo -->
+            <div class="grid-item animate-on-scroll">
+                <h3 style="background-color: #FF6347; color: white; padding: 10px;">Formazione e Educazione</h3>
+                <p>Dal piano editoriale ai contenuti visivi, dal copywriting ai report: ti accompagno nella gestione e nella crescita dei tuoi canali social, mettendo al centro i tuoi valori e la tua voce.</p>
+            </div>
+
+            <!-- Blocco 4: Immagine -->
+            <div class="grid-item">
+                <img src="img/creazione-contenuti.jpg" alt="Creazione contenuti">
+            </div>
+
+            <!-- Blocco 5: Testo -->
+            <div class="grid-item animate-on-scroll">
+                <h3 style="background-color: #9B59B6; color: white; padding: 10px;">Gestione Cinema e Spazi Culturali</h3>
+                <p>Credo in una comunicazione sostenibile, empatica e strategica. Niente ricette preconfezionate: ogni progetto è unico, come chi lo guida. Ascolto, studio, creo: insieme.</p>
+            </div>
+
+            <!-- Blocco 6: Immagine -->
+            <div class="grid-item">
+                <img src="img/social-collaborazione.jpg" alt="Collaborazione social">
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.animate-on-scroll, .animate-from-right, .animate-from-bottom, .animate-from-top');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
