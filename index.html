@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUI media – Social Media Marketing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="script.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="header.js" defer></script>
+</head>
+<body>
+    <header id="header"></header>
+
+    <main>
+    <section class="content-grid">
+        <!-- Blocco 1: Testo -->
+        <div class="grid-item animate-on-scroll">
+            <h3 style="background-color: #FFD700; color: white; padding: 10px;">Cos'è il social media marketing in breve e perchè è importante</h3>
+            <p><strong>Essere presenti online non basta più</strong>: oggi serve <strong>una strategia efficace</strong>.  
+            Il social media marketing ti permette di <strong>costruire un’identità solida</strong>, <strong>dialogare con il tuo pubblico</strong> e <strong>trasformare la visibilità in opportunità concrete</strong>.  
+            Ogni contenuto che pubblichi può diventare un <strong>punto di contatto, di relazione e di fiducia</strong>.  
+            <strong>I social non sono solo strumenti: sono il volto digitale della tua azienda</strong>.  
+            Se vuoi davvero emergere, <strong>è il momento di farti notare nel modo giusto</strong>.</p>
+        </div>
+
+        <!-- Blocco 2: Immagine -->
+        <div class="grid-item">
+            <img src="img/strategia-social.jpg" alt="Strategia social">
+        </div>
+
+        <!-- Blocco 3: Testo -->
+        <div class="grid-item animate-on-scroll">
+            <h3 style="background-color: #FF6347; color: white; padding: 10px;">Quali opportunità in concreto per la tua azienda?</h3>
+            <p><strong>Dietro a ogni canale social efficace c’è un lavoro strategico preciso.</strong>  
+            Dalla <strong>creazione del piano editoriale</strong> alla <strong>scelta dei contenuti giusti</strong>,  
+            dalla <strong>scrittura di testi persuasivi</strong> al <strong>monitoraggio dei risultati</strong>,  
+            ogni fase è pensata per <strong>far crescere la tua presenza online</strong> e <strong>generare valore reale per il tuo business</strong>.  
+            <strong>La tua voce è unica. Io ti aiuto a farla emergere con chiarezza e coerenza.</strong></p>
+        </div>
+
+        <!-- Blocco 4: Immagine -->
+        <div class="grid-item">
+            <img src="img/creazione-contenuti.jpg" alt="Creazione contenuti">
+        </div>
+
+        <!-- Blocco 5: Testo -->
+        <div class="grid-item animate-on-scroll">
+            <h3 style="background-color: #9B59B6; color: white; padding: 10px;">Vorrei avere maggiori informazioni, come faccio?</h3>
+            <p><strong>Ogni brand ha una storia diversa, ed è da lì che parto.</strong><br>
+            Ti propongo un approccio fatto di <strong>ascolto attivo, analisi concreta e creatività su misura</strong>.  
+            <strong>Niente soluzioni preconfezionate</strong>: solo strategie pensate per ciò che sei e per dove vuoi arrivare.  
+            <strong>Contattami e iniziamo a costruire qualcosa di autentico, insieme.</strong></p>
+        </div>
+
+        <!-- Blocco 6: Immagine -->
+        <div class="grid-item">
+            <img src="img/social-collaborazione.jpg" alt="Collaborazione social">
+        </div>
+    </section>
+</main>
+
+    <footer></footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.animate-on-scroll, .animate-from-right, .animate-from-bottom, .animate-from-top');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
