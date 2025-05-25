@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contattami – SUI media</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <script src="script.js" defer></script>
+  <script src="footer.js" defer></script>
+  <script src="header.js" defer></script>
+</head>
+<body>
+  <header id="header"></header>
+
+  <main>
+    <section class="content-grid">
+      <div class="grid-item animate-on-scroll">
+        <h3>Contattami</h3>
+        <p>Vuoi iniziare a lavorare insieme, hai delle domande o vuoi solo fare due chiacchiere? Scrivimi a questo indirizzo:</p>
+        <p><strong><a href="mailto:prova@prova.it">prova@prova.it</a></strong></p>
+        <p>Sarò felice di ascoltarti e trovare la soluzione giusta per il tuo progetto.</p>
+
+        <form id="contact-form">
+          <label>Nome:
+            <input type="text" name="from_name" required />
+          </label>
+          <label>Email:
+            <input type="email" name="from_email" required />
+          </label>
+          <label>Messaggio:
+            <textarea name="message" required></textarea>
+          </label>
+          <!-- campo nascosto honeypot -->
+          <input type="text" name="oggetto" style="display:none" autocomplete="off" />
+          <button type="submit">Invia</button>
+        </form>
+      </div>
+
+      <div class="grid-item">
+        <img src="img/contattami.jpg" alt="Contattami" />
+      </div>
+    </section>
+  </main>
+
+  <footer></footer>
+
+  <!-- Script EmailJS aggiornato -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init('xkttiuhy9d4mRifMp'); // Inserisci la tua Public Key
+    })();
+
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Controllo honeypot
+      if(this.oggetto.value !== "") {
+        // Se il campo nascosto è compilato, blocca l'invio (bot)
+        alert('Errore: invio bloccato.');
+        return;
+      }
+
+      emailjs.sendForm('service_mfvhhol', 'template_piez61o', this)
+        .then(function() {
+          alert('Messaggio inviato con successo!');
+          document.getElementById('contact-form').reset();
+        }, function(error) {
+          alert('Errore nell\'invio: ' + JSON.stringify(error));
+        });
+    });
+  </script>
+</body>
+</html>
