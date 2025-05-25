@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafici Interattivi</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <main class="main-content">
+        <div class="grid-container">
+            <!-- Blocco 1: TESTO -->
+            <div class="grid-item animate-on-scroll">
+                <h2>Introduzione al Social Media Marketing</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec eros ut nisi aliquam feugiat.</p>
+            </div>
+
+            <!-- Blocco 2: GRAFICO SOCIAL -->
+            <div class="grid-item animate-on-scroll">
+                <h2>Social più usati in Italia</h2>
+                <canvas id="socialChart"></canvas>
+            </div>
+
+            <!-- Blocco 3: TESTO -->
+            <div class="grid-item animate-on-scroll">
+                <h2>Vantaggi e Svantaggi</h2>
+                <p>Social media marketing offre numerosi vantaggi come visibilità, engagement e conversioni, ma ci sono anche alcune sfide.</p>
+            </div>
+
+            <!-- Blocco 4: Grafico "Tempo medio giornaliero trascorso sui social in Italia" -->
+            <div class="grid-item animate-on-scroll">
+                <h2>Tempo medio giornaliero trascorso sui social in Italia</h2>
+                <!-- Contatore animato -->
+                <div class="counter-container">
+                    <div class="counter" id="counter">0</div>
+                    <div class="unit">minuti</div>
+                </div>
+            </div>
+
+            <!-- Blocco 5: TESTO -->
+            <div class="grid-item animate-on-scroll">
+                <h2>Strategie di Marketing Efficaci</h2>
+                <p>Strategie avanzate includono contenuti visivi, storytelling, influencer marketing, e pubblicità mirate.</p>
+            </div>
+
+            <!-- Blocco 6: GRAFICO SOCIAL - Percentuale di piccole imprese italiane attive sui social -->
+            <div class="grid-item animate-on-scroll">
+                <h2>Percentuale di piccole imprese italiane attive sui social</h2>
+                <div class="chart-container">
+                    <div class="bar-container">
+                        <div class="percent" id="p1">0%</div>
+                        <div class="bar whatsapp" id="bar1"></div>
+                        <div class="label">2021</div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="percent" id="p2">0%</div>
+                        <div class="bar facebook" id="bar2"></div>
+                        <div class="label">2022</div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="percent" id="p3">0%</div>
+                        <div class="bar instagram" id="bar3"></div>
+                        <div class="label">2023</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
