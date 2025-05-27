@@ -1,0 +1,82 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const counterContainer = document.querySelector('.counter-container');
+    const barsContainer = document.querySelector('.chart-container');
+
+    // Animazione contatore (blocco 4)
+    function animateCounter() {
+        const counterElement = document.getElementById("counter");
+        const targetValue = 135;
+        let current = 0;
+
+        const step = () => {
+            if (current < targetValue) {
+                current += 1;
+                counterElement.textContent = current;
+                setTimeout(step, 20);
+            } else {
+                counterElement.textContent = targetValue;
+            }
+        };
+
+        step();
+    }
+
+    // Animazione barre (blocco 6)
+    function animateBars() {
+        const maxHeight = 300;
+        const bars = [
+            { id: "bar1", percentId: "p1", percentValue: 52.5 }, // 2021
+            { id: "bar2", percentId: "p2", percentValue: 54.0 }, // 2022
+            { id: "bar3", percentId: "p3", percentValue: 55.7 }  // 2023
+        ];
+
+        const duration = 3000; // Durata totale dell'animazione in millisecondi
+        const steps = 150; // Numero di passi per ogni barra
+
+        // Calcoliamo l'incremento per le barre e i numeri
+        bars.forEach((bar, index) => {
+            const height = (bar.percentValue / 100) * maxHeight;
+            const incrementHeight = height / steps;
+            const incrementPercent = bar.percentValue / steps;
+
+            let currentHeight = 0;
+            let currentPercent = 0;
+
+            const interval = setInterval(() => {
+                if (currentHeight < height) {
+                    currentHeight += incrementHeight;
+                    currentPercent += incrementPercent;
+
+                    // Imposta l'altezza della barra
+                    document.getElementById(bar.id).style.height = currentHeight + "px";
+
+                    // Imposta la percentuale del numero
+                    document.getElementById(bar.percentId).textContent = currentPercent.toFixed(1) + "%";
+                } else {
+                    clearInterval(interval);
+                    // Assicurati che la barra e il numero siano esattamente ai valori finali
+                    document.getElementById(bar.id).style.height = height + "px";
+                    document.getElementById(bar.percentId).textContent = bar.percentValue.toFixed(1) + "%";
+                }
+            }, duration / steps); // Tempo tra ogni incremento
+        });
+    }
+
+    // Intersection Observer per animazioni su scroll
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target === counterContainer) {
+                    animateCounter();
+                }
+                if (entry.target === barsContainer) {
+                    animateBars();
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    if (counterContainer) observer.observe(counterContainer);
+    if (barsContainer) observer.observe(barsContainer);
+});
