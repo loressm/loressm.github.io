@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SUI media – Social Media Marketing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    
+    <!-- Chart.js per grafico a torta -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="script.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="header.js" defer></script>
+
+    <style>
+        /* Grafico - stili interni per semplicità */
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 30px;
+            height: 300px;
+            padding: 0 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .bar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1 1 0;
+            min-width: 70px;
+            max-width: 100px;
+        }
+        .bar {
+            width: 100px;
+            height: 0;
+            border-radius: 8px 8px 0 0;
+            transition: height 2s ease;
+        }
+        .whatsapp {
+            background-color: #25D366;
+        }
+        .facebook {
+            background-color: #1877F2;
+        }
+        .instagram {
+            background-color: #E1306C;
+        }
+        .label {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            word-wrap: break-word;
+            text-align: center;
+        }
+        .percent {
+            font-weight: bold;
+            margin-bottom: 5px;
+            min-height: 20px;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .chart-container {
+                height: 200px;
+                gap: 15px;
+            }
+            .bar-container {
+                min-width: 40px;
+                max-width: 60px;
+            }
+            .bar {
+                width: 40px;
+            }
+            .label,
+            .percent {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Contatore blocco 4 */
+        .counter-container {
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Cambiato da baseline a center */
+            gap: 10px;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .unit {
+            font-size: 1.2rem;
+            font-weight: normal;
+            color: #555;
+        }
+
+        /* Animazioni fade-in usate */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .animate-on-scroll.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header id="header"></header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Aiuto la tua azienda a crescere sui social media</h1>
+    <p>Strategie personalizzate di social media marketing per aumentare la visibilità e coinvolgere il tuo pubblico.</p>
+    <a href="https://loressm.github.io/suimedia/servizi.html" class="btn-cta">Scopri i miei servizi</a>
+  </div>
+</section>
+
+    <main>
+        <section class="content-grid">
+            <!-- Blocco 1: Testo -->
+<div class="grid-item">
+    <h3 style="background-color: #FFD700; color: white; padding: 10px;">
+        Quanto fanno vendere i social?
+    </h3>
+    <p>
+        Quante volte hai sentito dire: "<strong>Se non sei presente online, non esisti</strong>"? Oggi, però, "esistere" non basta più. Ecco perché entra in gioco il social media marketing, che significa <strong>gestire e promuovere nel migliore dei modi i tuoi canali social</strong>. Affinché questa strategia sia efficace, è fondamentale che sia <strong>coerente e continuativa nel tempo</strong>, in modo da <strong>raggiungere il pubblico giusto</strong> e <strong>intercettare i suoi desideri e le sue necessità</strong>, prima che lo faccia qualcun altro.
+    </p>
+</div>
+
+            <!-- Blocco 2: GRAFICO SOCIAL a torta -->
+<div class="grid-item">
+    <h2>I social che fanno vendere</h2>
+    <p class="fonte-link">
+        <a href="https://www.foodaffairs.it/2024/11/06/quanto-fanno-vendere-i-social-media/" target="_blank">
+            Food affairs - Quanto fanno vendere i social media
+        </a>
+    </p>
+    <canvas id="socialPieChart" width="400" height="400"></canvas>
+</div>
+
+<!-- Blocco 3: Testo -->
+<div class="grid-item">
+    <h3 style="background-color: #4CAF50; color: white; padding: 10px;">
+        I benefici concreti per la tua attività
+    </h3>
+    <ul>
+        <li><strong>Pianificazione strategica dei contenuti</strong>: Creo una presenza solida sui social, pianificando campagne nei momenti più cruciali dell’anno.</li>
+        <li><strong>Riconoscibilità locale</strong>: Posiziono la tua azienda come punto di riferimento nel tuo territorio, aumentando la visibilità e la fiducia.</li>
+        <li><strong>Contenuti mirati e regolari</strong>: Progetto contenuti coinvolgenti che promuovono attivamente il tuo brand, attirando e mantenendo l’attenzione del pubblico.</li>
+        <li><strong>Interazione costante con il pubblico</strong>: Rispondo rapidamente e gestisco le interazioni, creando un legame forte con i tuoi clienti e aumentando la loro soddisfazione.</li>
+    </ul>
+</div>
+
+            <!-- Blocco 4: Grafico "Tempo medio giornaliero trascorso sui social in Italia" -->
+<div class="grid-item">
+    <h2>Tempo medio giornaliero trascorso sui social in Italia</h2>
+    <p class="fonte-link">
+        <a href="https://wearesocial.com/it/blog/2025/02/digital-2025-i-dati-italiani/" target="_blank">
+            Digital 2025, We Are Social
+        </a>
+    </p>
+
+    <!-- Contatore animato -->
+    <div class="counter-container">
+        <div class="counter" id="counter"></div>
+        <div class="unit">minuti</div>
+    </div>
+</div>
+
+            <!-- Blocco 5: Testo -->
+<div class="grid-item">
+    <h3 style="background-color: #9B59B6; color: white; padding: 10px;">
+        Non farti superare dagli altri
+    </h3>
+    <p>
+        C'è un pubblico là fuori che ha bisogno dei tuoi <strong>prodotti</strong> e <strong>servizi</strong>, ma non ti conosce ancora. Perché non aiutarlo a farti trovare <strong>prima</strong> che lo faccia la concorrenza? <a href="https://loressm.github.io/suimedia/contattami.html"><strong>Contattami</strong></a> senza impegno e vediamo insieme come far crescere il tuo <strong>brand</strong>.
+    </p>
+</div>
+
+            <!-- Blocco 6: Immagine al posto del grafico -->
+<div class="grid-item">
+    <img src="immagine.jpg" alt="Immagine" style="width: 100%; height: auto; border-radius: 10px;" />
+</div>
+
+        </section>
+    </main>
+
+    <footer></footer>
+
+    <script>
+        // Scroll animation observer testi
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll('.animate-on-scroll');
+            const options = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -150px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+    <script>
+  // Animazione grafico a torta con start on visibility
+  document.addEventListener("DOMContentLoaded", function () {
+    let pieChartInitialized = false;
+    const canvas = document.getElementById('socialPieChart');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !pieChartInitialized) {
+          const ctx = canvas.getContext('2d');
+
+          const data = {
+  labels: ['Instagram', 'Facebook', 'TikTok'], // Nuove etichette
+  datasets: [{
+    label: 'Percentuale utenti',
+    data: [55.9, 53.2, 14.5], // Nuovi valori percentuali
+    backgroundColor: [
+      '#E1306C', // Instagram
+      '#1877F2', // Facebook
+      '#FFD700'  // TikTok
+    ],
+    hoverOffset: 30
+  }]
+};
+
+          new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+              animation: {
+                duration: 4000
+              },
+              cutout: '65%',
+              plugins: {
+                tooltip: {
+                  callbacks: {
+                    label: function(tooltipItem) {
+                      const label = tooltipItem.label || '';
+                      const value = tooltipItem.raw || 0;
+                      let additionalInfo = '';
+
+                      // Aggiungi il testo specifico per ogni fetta
+                      if (label === 'Instagram') {
+                        additionalInfo = 'di impatto sugli acquisti sui social.';
+                      } else if (label === 'Facebook') {
+                        additionalInfo = 'di impatto sugli acquisti sui social.';
+                      } else if (label === 'TikTok') {
+                        additionalInfo = 'di impatto sugli acquisti sui social.';
+                      }
+
+                      return label + ': ' + value.toFixed(1) + '%\n' + additionalInfo; // Mostra la percentuale + info
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+          pieChartInitialized = true;
+          observer.unobserve(canvas);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(canvas);
+  });
+</script>
+</body>
+</html>
