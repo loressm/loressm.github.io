@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Il tuo risultato – SUI media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="test/test.css" />
+    <script src="script.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="header.js" defer></script>
+</head>
+<body>
+    <header id="header"></header>
+
+    <main>
+        <section class="content-grid">
+            <!-- Primo blocco: Titolo e descrizione -->
+            <div class="grid-item" id="focus-block">
+                <h2 id="focus-title"></h2>
+                <div id="focus-description"></div>
+            </div>
+
+            <!-- Secondo blocco: Soluzioni -->
+            <div class="grid-item" id="solutions-block">
+                <h3>Cosa possiamo fare subito?</h3>
+                <div id="focus-solutions"></div>
+                <p style="text-align:center; margin-top: 2rem;">
+                    <a href="contattami.html" class="btn-cta">Prenota una consulenza gratuita</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+    <script>
+        const testiFocus = {
+            awareness: {
+                title: "Brand Awareness, ovvero la consapevolezza che le persone hanno del tuo marchio",
+                description: `
+                    La tua strategia social deve partire dalla brand awareness. In altre parole, il pubblico non ti conosce abbastanza. Senza una solida visibilità, è difficile attrarre nuovi clienti e far crescere il tuo brand.
+                    <br><br>
+                    Inizia a lavorare per farti conoscere: costruisci contenuti coerenti che parlino della tua identità, dei tuoi valori e della tua missione. Questo ti aiuterà a creare un legame autentico con il pubblico, facendo in modo che il tuo brand venga riconosciuto e ricordato.
+                    <br><br>
+                    Potresti iniziare con una strategia di contenuti visivi (immagini, video, infografiche) e promuovere i tuoi valori attraverso storie e contenuti che emozionano.
+                `,
+                solutions: `
+                    <ul>
+                        <li><strong>Creazione di contenuti visivi accattivanti</strong>: Utilizza Instagram, YouTube e altre piattaforme visive per mostrare il tuo brand con contenuti autentici che raccontano la tua storia. Video, foto e infografiche sono particolarmente potenti per aumentare la riconoscibilità del brand.</li>
+                        <li><strong>Collaborazioni con influencer</strong>: Anche se il budget è limitato, cerca collaborazioni con micro-influencer che possano aiutarti a far conoscere il tuo marchio in modo più naturale e raggiungere un pubblico più ampio.</li>
+                        <li><strong>Campagne pubblicitarie mirate</strong>: Inizia a fare piccole campagne pubblicitarie su piattaforme come Facebook e Instagram per incrementare la visibilità. Puoi targetizzare il pubblico per demografia, interessi e comportamenti, facendo in modo che il tuo messaggio arrivi a chi ha maggiori probabilità di interagire con il tuo brand.</li>
+                    </ul>
+                `
+            },
+            interest: {
+                title: "Engagement e Interesse, ovvero coinvolgere il pubblico e stimolare la curiosità",
+                description: `
+                    Se il pubblico ti conosce, ma non è ancora completamente coinvolto, è il momento di stimolare il loro interesse. La fase successiva dopo la brand awareness è l'engagement. 
+                    <br><br>
+                    È importante costruire un legame più profondo e significativo con il tuo pubblico, per farlo interessare ai tuoi prodotti e servizi. Crea contenuti che rispondano ai bisogni, desideri e sfide del tuo target. In questa fase, il tuo obiettivo sarà quello di stimolare la curiosità e l'interesse nei tuoi confronti.
+                `,
+                solutions: `
+                    <ul>
+                        <li><strong>Creazione di contenuti educativi e di valore</strong>: Produci contenuti che risolvano problemi concreti per il tuo pubblico, come tutorial, guide o articoli informativi. Questo aumenterà l'interesse e la fiducia nel tuo brand.</li>
+                        <li><strong>Inizia una serie di post interattivi</strong>: Organizza quiz, sondaggi o discussioni sui social per stimolare il coinvolgimento e permettere al pubblico di conoscere meglio il tuo brand.</li>
+                        <li><strong>Marketing di contenuti personalizzato</strong>: Crea contenuti personalizzati per segmenti specifici del tuo pubblico, in modo da rispondere direttamente ai loro bisogni e desideri, aumentando così l'interesse per ciò che fai.</li>
+                    </ul>
+                `
+            },
+            // Altri focus (consideration, conversion, loyalty)...
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const loader = document.getElementById("loader-container");
+            const container = document.getElementById("risultato-container");
+
+            const risultatoRaw = localStorage.getItem("quizRisultatoCompleto");
+            if(!risultatoRaw) {
+                loader.innerHTML = `<p style="color:red; text-align:center;">Nessun risultato trovato. Ritorna al test e prova di nuovo.</p>`;
+                return;
+            }
+
+            const risultato = JSON.parse(risultatoRaw);
+            const focus = testiFocus[risultato.focusPrimario];
+
+            setTimeout(() => {
+                loader.style.display = "none";
+                container.style.display = "block";
+
+                document.getElementById("focus-title").innerHTML = focus.title;
+                document.getElementById("focus-description").innerHTML = focus.description;
+                document.getElementById("focus-solutions").innerHTML = focus.solutions;
+
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
