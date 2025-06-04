@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Il tuo risultato – SUI media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="test/test.css" />
+    <script src="script.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="header.js" defer></script>
+</head>
+<body>
+    <header id="header"></header>
+
+    <main>
+        <section class="content-grid">
+            <div class="grid-item" id="loader-container">
+                <div class="loader"></div>
+                <p style="text-align: center;">Analizzo le tue risposte...</p>
+            </div>
+
+            <div class="grid-item" id="risultato-container" style="display: none;">
+                <h2>Risultato del tuo test</h2>
+                <p id="risultato-testo"></p>
+                <p style="text-align:center; margin-top: 2rem;">
+                    <a href="contattami.html" class="btn-cta">Prenota una consulenza gratuita</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+    <script>
+        const risultati = {
+            awareness: `
+                <strong>Hai bisogno di lavorare sulla Brand Awareness.</strong><br />
+                Il tuo brand ha bisogno di essere riconosciuto dal pubblico. Partiamo con contenuti strategici e campagne per farti conoscere.
+            `,
+            interest: `
+                <strong>Serve aumentare l'interesse verso il tuo brand.</strong><br />
+                Il pubblico ti conosce, ma non è ancora coinvolto. Costruiamo contenuti che parlano ai loro bisogni reali.
+            `,
+            consideration: `
+                <strong>Il tuo pubblico ti considera, ma serve spingerli a scegliere te.</strong><br />
+                Rafforziamo la tua credibilità con testimonianze, benefici chiari e differenziazione dai competitor.
+            `,
+            conversion: `
+                <strong>Hai bisogno di aumentare le conversioni.</strong><br />
+                Ottimizziamo il percorso utente con offerte, call to action efficaci e pagine chiare per spingerli all’azione.
+            `,
+            loyalty: `
+                <strong>Serve lavorare sulla fidelizzazione.</strong><br />
+                Il primo acquisto è solo l’inizio. Coinvolgiamo i clienti già acquisiti per farli tornare e diventare fan del brand.
+            `
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const risultato = localStorage.getItem("quizRisultato") || "awareness";
+            const loader = document.getElementById("loader-container");
+            const contenitore = document.getElementById("risultato-container");
+            const testo = document.getElementById("risultato-testo");
+
+            setTimeout(() => {
+                loader.style.display = "none";
+                contenitore.style.display = "block";
+                testo.innerHTML = risultati[risultato];
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
