@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Il tuo risultato – SUI media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="test.css" />
+    <script src="../script.js" defer></script>
+    <script src="../footer.js" defer></script>
+    <script src="../header.js" defer></script>
+</head>
+<body>
+    <header id="header"></header>
+
+    <main>
+        <section class="content-grid">
+            <div class="grid-item" id="loader-container">
+                <div class="loader"></div>
+                <p style="text-align: center;">Analizzo le tue risposte...</p>
+            </div>
+
+            <div class="grid-item" id="risultato-container" style="display: none;">
+                <h2>Il focus principale per la tua strategia social</h2>
+                <div id="focus-primario"></div>
+
+                <h3>Approfondimento</h3>
+                <div id="focus-secondario"></div>
+
+                <h3>Dettagli sulla tua situazione</h3>
+                <div id="dettagli-risposte"></div>
+
+                <p style="text-align:center; margin-top: 2rem;">
+                    <a href="contattami.html" class="btn-cta">Prenota una consulenza gratuita</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+<script>
+    const testiFocus = {
+        awareness: `
+            <h3>Brand Awareness</h3>
+            <p>Per emergere nel mercato, è fondamentale far conoscere il tuo brand e differenziarti dalla concorrenza. Creeremo contenuti mirati per aumentare la visibilità e costruire una solida reputazione.</p>
+        `,
+        interest: `
+            <h3>Engagement e Interesse</h3>
+            <p>Coinvolgere il pubblico è essenziale per costruire una community attiva e fedele. Useremo strategie di contenuto che parlano ai bisogni e desideri del tuo target.</p>
+        `,
+        consideration: `
+            <h3>Consideration</h3>
+            <p>Ora che il pubblico ti conosce, lavoreremo per rafforzare la fiducia e spingerlo verso la scelta del tuo prodotto o servizio, evidenziando i tuoi punti di forza unici.</p>
+        `,
+        conversion: `
+            <h3>Conversione</h3>
+            <p>L’obiettivo è trasformare l’interesse in azione concreta. Ottimizzeremo il percorso del cliente con call to action efficaci e campagne mirate per aumentare vendite e contatti.</p>
+        `,
+        loyalty: `
+            <h3>Fidelizzazione</h3>
+            <p>Mantenere i clienti acquisiti è la chiave per la crescita sostenibile. Implementeremo strategie per coinvolgerli, aumentarne la soddisfazione e trasformarli in ambasciatori del brand.</p>
+        `
+    };
+
+    const dettagliRisposteTemplate = (risposte) => `
+        <ul>
+            <li><strong>Modello di business:</strong> ${risposte.business.toUpperCase()}</li>
+            <li><strong>Settore:</strong> ${risposte.settore.replace(/_/g, " ")}</li>
+            <li><strong>Concorrenza:</strong> ${risposte.concorrenza}</li>
+            <li><strong>Presenza attuale:</strong> ${risposte.presenza.replace(/_/g, " ")}</li>
+            <li><strong>Obiettivo principale:</strong> ${risposte.obiettivo}</li>
+            <li><strong>Campagne adv:</strong> ${risposte.adv}</li>
+            <li><strong>Budget:</strong> ${risposte.budget}</li>
+            <li><strong>Canale acquisizione:</strong> ${risposte.canale.replace(/_/g, " ")}</li>
+        </ul>
+    `;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const loader = document.getElementById("loader-container");
+        const container = document.getElementById("risultato-container");
+
+        const risultatoRaw = localStorage.getItem("quizRisultatoCompleto");
+        if(!risultatoRaw) {
+            loader.innerHTML = `<p style="color:red; text-align:center;">Nessun risultato trovato. Ritorna al test e prova di nuovo.</p>`;
+            return;
+        }
+
+        const risultato = JSON.parse(risultatoRaw);
+
+        setTimeout(() => {
+            loader.style.display = "none";
+            container.style.display = "block";
+
+            document.getElementById("focus-primario").innerHTML = testiFocus[risultato.focusPrimario] || "";
+            document.getElementById("focus-secondario").innerHTML = testiFocus[risultato.focusSecondario] || "";
+            document.getElementById("dettagli-risposte").innerHTML = dettagliRisposteTemplate(risultato.risposte);
+
+        }, 2000);
+    });
+</script>
+
+</body>
+</html>
