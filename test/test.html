@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Test Strategia Social – SUI media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="test.css" />
+    <script src="../script.js" defer></script>
+    <script src="../footer.js" defer></script>
+    <script src="../header.js" defer></script>
+    <script src="test.js" defer></script>
+</head>
+<body>
+    <header id="header"></header>
+
+    <main>
+        <section class="content-grid">
+            <div class="grid-item">
+                <h3>Scopri da dove partire con la tua strategia social</h3>
+                <form id="quiz-form">
+                    <!-- Domanda 1 -->
+                    <label>1. Qual è il tuo modello di business principale?</label>
+                    <select name="business">
+                        <option value="b2b">B2B</option>
+                        <option value="b2c">B2C</option>
+                        <option value="entrambi">Entrambi</option>
+                    </select>
+
+                    <!-- Domanda 2 -->
+                    <label>2. In quale settore opera la tua attività?</label>
+                    <select name="settore">
+                        <option value="moda">Moda / Beauty</option>
+                        <option value="food">Ristorazione / Food</option>
+                        <option value="servizi">Servizi professionali</option>
+                        <option value="fitness">Benessere / Fitness</option>
+                        <option value="turismo">Turismo / Viaggi</option>
+                        <option value="altro">Altro</option>
+                    </select>
+
+                    <!-- Domanda 3 -->
+                    <label>3. Quanto è alta la concorrenza nel tuo settore sui social?</label>
+                    <select name="concorrenza">
+                        <option value="alta">Alta</option>
+                        <option value="media">Media</option>
+                        <option value="bassa">Bassa</option>
+                    </select>
+
+                    <!-- Domanda 4 -->
+                    <label>4. Come definiresti la tua presenza attuale sui social?</label>
+                    <select name="presenza">
+                        <option value="inesistente">Inesistente</option>
+                        <option value="poco_attiva">Presente ma poco attiva</option>
+                        <option value="attiva_ma_inefficace">Attiva ma poco efficace</option>
+                        <option value="attiva_e_buoni_risultati">Attiva e con buoni risultati</option>
+                    </select>
+
+                    <!-- Domanda 5 -->
+                    <label>5. Cosa vorresti ottenere nel breve periodo?</label>
+                    <select name="obiettivo">
+                        <option value="visibilita">Più visibilità</option>
+                        <option value="interazione">Più interazione / community</option>
+                        <option value="lead">Più contatti o lead</option>
+                        <option value="vendite">Più vendite</option>
+                        <option value="fidelizzazione">Più clienti fedeli</option>
+                    </select>
+
+                    <!-- Domanda 6 -->
+                    <label>6. Hai mai investito in campagne pubblicitarie online?</label>
+                    <select name="adv">
+                        <option value="mai">No, mai</option>
+                        <option value="qualche_volta">Qualche volta</option>
+                        <option value="spesso">Sì, spesso</option>
+                    </select>
+
+                    <!-- Domanda 7 -->
+                    <label>7. Hai già un budget mensile da dedicare alla comunicazione online?</label>
+                    <select name="budget">
+                        <option value="nessuno">Nessun budget ancora</option>
+                        <option value="basso">Meno di 200€</option>
+                        <option value="medio">Tra 200€ e 500€</option>
+                        <option value="alto">Oltre 500€</option>
+                    </select>
+
+                    <!-- Domanda 8 -->
+                    <label>8. Qual è il canale principale con cui oggi acquisisci nuovi clienti?</label>
+                    <select name="canale">
+                        <option value="passaparola">Passaparola / contatti diretti</option>
+                        <option value="google">Ricerca Google / sito web</option>
+                        <option value="social">Social media</option>
+                        <option value="eventi">Fiere / eventi / rete commerciale</option>
+                        <option value="nessuno">Non sto acquisendo nuovi clienti regolarmente</option>
+                    </select>
+
+                    <button type="submit" class="btn-cta">Vedi il tuo risultato</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+</body>
+</html>
