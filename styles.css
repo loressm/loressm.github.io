@@ -738,55 +738,95 @@ p.fonte-link {
 /* Contenitore per la griglia dei servizi */
 .servizi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Griglia responsive */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Fino a 4 colonne su desktop */
     gap: 20px;
-    padding: 20px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Stili per ogni item della griglia */
 .grid-item {
-    background-color: #f9f9f9;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
 }
 
 .grid-item:hover {
     transform: translateY(-5px); /* Leggera animazione di hover */
 }
 
+/* Icone */
 .service-icon {
     font-size: 40px;
     margin-bottom: 15px;
-    color: #4CAF50; /* Colore iconiche, puoi personalizzarlo */
+    color: #4CAF50; /* Colore icone, personalizzabile */
 }
 
-h3 {
+/* Titolo del servizio */
+.grid-item h3 {
     color: #333;
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
-p {
+/* Descrizione del servizio */
+.grid-item p {
     color: #666;
     font-size: 1rem;
     margin-bottom: 15px;
 }
 
+/* Bottone CTA (solo nel blocco finale) */
 .btn-cta {
     background-color: #FFD700;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: auto;
 }
 
 .btn-cta:hover {
-    background-color: #FFB300; /* Colore hover */
+    background-color: #FFB300;
 }
 
+/* Blocco CTA finale (ottavo elemento della griglia) */
+.cta-blocco .cta-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Colori personalizzati per ogni blocco */
+.item-1 { background-color: #FDEBD0; }  /* Beige */
+.item-2 { background-color: #D6EAF8; }  /* Azzurro */
+.item-3 { background-color: #E8DAEF; }  /* Lilla */
+.item-4 { background-color: #FADBD8; }  /* Rosa */
+.item-5 { background-color: #D5F5E3; }  /* Verde menta */
+.item-6 { background-color: #FCF3CF; }  /* Giallo pastello */
+.item-7 { background-color: #EBDEF0; }  /* Malva */
+.item-8 { background-color: #F5B041; color: #fff; } /* CTA - arancio vivo */
+
+.item-8 h3,
+.item-8 p {
+    color: #fff;
+}
+
+/* Media query per limitare a massimo 4 colonne su schermi grandi */
+@media (min-width: 1200px) {
+    .servizi-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
 
