@@ -1,0 +1,113 @@
+/* Stili base per il modulo del test */
+form#quiz-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 0;
+}
+
+form#quiz-form label {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+form#quiz-form select {
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+form#quiz-form .btn-cta {
+    margin-top: 2rem;
+    align-self: start;
+}
+
+/* Loader (risultato.html) */
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Risultato testo */
+#risultato-container {
+    padding: 2rem 0;
+    text-align: left;
+}
+
+#risultato-container h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+#risultato-container p {
+    font-size: 1rem;
+    line-height: 1.6;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Nuova regola per test.html: due colonne affiancate larghe uguali */
+.content-grid {
+    display: flex;
+    gap: 2rem;
+}
+
+.content-grid > .grid-item {
+    flex: 1;
+}
+
+/* Effetto domino: scala verticale senza dissolvenza */
+.funnel-level {
+  transform-origin: top center;
+  transform: scaleY(0);
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+.funnel-level.visible {
+  animation-name: dominoScale;
+  animation-duration: 0.3s;
+}
+
+@keyframes dominoScale {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Ritardi progressivi per effetto domino */
+.funnel-level:nth-child(1).visible { animation-delay: 0s; }
+.funnel-level:nth-child(2).visible { animation-delay: 0.15s; }
+.funnel-level:nth-child(3).visible { animation-delay: 0.3s; }
+.funnel-level:nth-child(4).visible { animation-delay: 0.45s; }
+.funnel-level:nth-child(5).visible { animation-delay: 0.6s; }
+
+/* Ingrandimento funnel su desktop */
+@media (min-width: 769px) {
+  #funnel .level-1 { max-width: 450px; width: 100%; }
+  #funnel .level-2 { max-width: 410px; width: 90%; }
+  #funnel .level-3 { max-width: 370px; width: 75%; }
+  #funnel .level-4 { max-width: 330px; width: 60%; }
+  #funnel .level-5 { max-width: 290px; width: 45%; }
+
+  #funnel .funnel-level {
+    font-size: 1.2rem;  /* Aumenta la dimensione del testo */
+    padding: 1.2rem 1.5rem;  /* Aumenta lo spazio interno */
+  }
+
+  #funnel {
+    margin-left: 3.5rem; /* Puoi anche regolare il margine laterale */
+  }
+}
