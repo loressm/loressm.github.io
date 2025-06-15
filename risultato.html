@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Il tuo risultato – SUI media</title>
+
+    <!-- Favicon classica in vari formati per browser desktop -->
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon_centered_32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon_centered_16x16.png">
+<link rel="shortcut icon" href="/img/favicon_centered.ico" type="image/x-icon">
+
+<!-- Icona per dispositivi Apple (iPhone, iPad) -->
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon_centered_180x180.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="test/test.css" />
+  <script src="script.js" defer></script>
+  <script src="footer.js" defer></script>
+  <script src="header.js" defer></script>
+</head>
+<body>
+  <header id="header"></header>
+
+  <main>
+    <!-- LOADER INIZIALE -->
+    <div id="loader-container">
+      <div class="loader"></div>
+      <p style="text-align: center;">Analizzo le tue risposte...</p>
+    </div>
+
+    <!-- SEZIONE RISULTATO (INIZIALMENTE NASCOSTA) -->
+    <section class="content-grid" id="result-section" style="display: none;">
+      <!-- BLOCCO SINISTRO -->
+      <div class="grid-item" id="left-block">
+        <h2 id="focus-title"></h2>
+        <div id="focus-description"></div>
+      </div>
+
+      <!-- BLOCCO DESTRO -->
+      <div class="grid-item" id="right-block">
+        <h3>Cosa possiamo fare subito?</h3>
+        <div id="focus-solutions"></div>
+
+        <p style="text-align:center; margin-top: 2rem;">
+          <a href="contattami.html" class="btn-cta">Prenota una consulenza gratuita</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer></footer>
+
+  <!-- SCRIPT LOGICA RISULTATO -->
+  <script>
+    const testiFocus = {
+      awareness: {
+        title: "Brand Awareness, ovvero la consapevolezza che le persone hanno del tuo marchio",
+        description: `
+          La tua strategia social deve partire dalla brand awareness. In altre parole, il pubblico non ti conosce abbastanza.
+          <br><br>
+          Inizia a lavorare per farti conoscere: costruisci contenuti coerenti che parlino della tua identità, dei tuoi valori e della tua missione.
+        `,
+        solutions: `
+          <ul>
+            <li><strong>Contenuti visivi accattivanti</strong>: Instagram, YouTube, immagini, video, infografiche.</li>
+            <li><strong>Collaborazioni con influencer</strong>: anche micro-influencer se il budget è limitato.</li>
+            <li><strong>Campagne pubblicitarie mirate</strong>: Facebook, Instagram, targeting per interessi e comportamenti.</li>
+          </ul>
+        `
+      },
+      interest: {
+        title: "Interest, ovvero l'interesse verso il tuo brand e prodotti",
+        description: `
+          Una volta che il pubblico ti conosce, è importante stimolare il suo interesse con contenuti coinvolgenti.
+          <br><br>
+          "Interest" significa suscitare curiosità e attenzione nelle persone verso la tua offerta.
+        `,
+        solutions: `
+          <ul>
+            <li><strong>Post interattivi e coinvolgenti</strong>: sondaggi, quiz, video live.</li>
+            <li><strong>Storytelling</strong>: racconta storie autentiche e valori del tuo brand.</li>
+            <li><strong>Newsletter e contenuti esclusivi</strong>: per coltivare il rapporto con il pubblico.</li>
+          </ul>
+        `
+      },
+      consideration: {
+        title: "Consideration, la fase in cui il cliente valuta le tue offerte",
+        description: `
+          Qui il pubblico sta considerando attivamente se scegliere te o i concorrenti.
+          <br><br>
+          "Consideration" indica il processo decisionale che porta l’utente a confrontare prodotti o servizi.
+        `,
+        solutions: `
+          <ul>
+            <li><strong>Recensioni e testimonianze</strong>: mostrale sui social e sul sito.</li>
+            <li><strong>Demo o prove gratuite</strong>: fai toccare con mano il valore.</li>
+            <li><strong>Contenuti educativi</strong>: guide, tutorial, webinar.</li>
+          </ul>
+        `
+      },
+      conversion: {
+        title: "Conversion, ovvero la trasformazione dell’interesse in azione concreta",
+        description: `
+          Ora l’obiettivo è spingere l’utente a compiere l’azione desiderata (acquisto, iscrizione, contatto).
+          <br><br>
+          "Conversion" indica l'effettiva conclusione del percorso con un risultato tangibile.
+        `,
+        solutions: `
+          <ul>
+            <li><strong>Call to action chiare e persuasive</strong>.</li>
+            <li><strong>Offerte speciali e promozioni</strong>: per incentivare l’acquisto.</li>
+            <li><strong>Remarketing</strong>: campagne pubblicitarie mirate a chi ha mostrato interesse.</li>
+          </ul>
+        `
+      },
+      loyalty: {
+        title: "Loyalty, ovvero la fidelizzazione e mantenimento dei clienti",
+        description: `
+          Mantenere i clienti fedeli è fondamentale per il successo a lungo termine.
+          <br><br>
+          "Loyalty" significa costruire un rapporto duraturo con il cliente attraverso valore e attenzione continua.
+        `,
+        solutions: `
+          <ul>
+            <li><strong>Programmi fedeltà e premi</strong>.</li>
+            <li><strong>Comunicazione personalizzata</strong>: newsletter, messaggi dedicati.</li>
+            <li><strong>Customer care eccellente</strong>: rispondi sempre e bene ai clienti.</li>
+          </ul>
+        `
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const loader = document.getElementById("loader-container");
+      const resultSection = document.getElementById("result-section");
+
+      const risultatoRaw = localStorage.getItem("quizRisultatoCompleto");
+      if (!risultatoRaw) {
+        loader.innerHTML = `<p style="color:red; text-align:center;">Nessun risultato trovato. Ritorna al test e prova di nuovo.</p>`;
+        return;
+      }
+
+      const risultato = JSON.parse(risultatoRaw);
+      const focus = testiFocus[risultato.focusPrimario];
+
+      // Mappa dei colori per ogni livello
+      const funnelColors = {
+        awareness: '#f44336',    // Rosso
+        interest: '#ff9800',     // Arancione
+        consideration: '#ffc107',// Giallo
+        conversion: '#4caf50',   // Verde
+        loyalty: '#2196f3'       // Blu
+      };
+
+      setTimeout(() => {
+        loader.style.display = "none";
+        resultSection.style.display = "grid";
+
+        document.getElementById("focus-title").innerHTML = focus.title;
+        document.getElementById("focus-description").innerHTML = focus.description;
+        document.getElementById("focus-solutions").innerHTML = focus.solutions;
+
+        // Impostazione del colore del riquadro in base al livello del funnel
+        const leftBlock = document.getElementById("left-block");
+        const color = funnelColors[risultato.focusPrimario]; // Ottieni il colore dal livello
+        leftBlock.style.backgroundColor = color; // Imposta il colore di sfondo del riquadro
+        leftBlock.style.color = 'white';  // Imposta il colore del testo in bianco per contrasto
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
