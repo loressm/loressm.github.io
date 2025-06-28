@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Hello, I'm Lorenzo – Digital Marketing Consultant | SUI media</title>
+  <meta name="description" content="I'm Lorenzo, a digital marketing consultant based in Italy. I help local businesses communicate better online and I'm open to international collaborations." />
+  <meta name="keywords" content="digital marketing Italy, social media consultant Italy, digital strategy, content design" />
+
+  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content="Hello, I'm Lorenzo – Digital Marketing Consultant | SUI media" />
+  <meta property="og:description" content="I help local businesses grow online with authentic and strategic communication." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://suimedia.it/marketing-digitale-venezia-padova-chi-sono.html" />
+  <meta property="og:image" content="https://suimedia.it/img/logo2.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hello, I'm Lorenzo – Digital Marketing Consultant | SUI media" />
+  <meta name="twitter:description" content="I help local businesses grow online with authentic and strategic communication." />
+  <meta name="twitter:image" content="https://suimedia.it/img/logo2.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://suimedia.it/img/favicon_centered_32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://suimedia.it/img/favicon_centered_16x16.png" />
+  <link rel="shortcut icon" href="https://suimedia.it/img/favicon_centered.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://suimedia.it/img/favicon_centered_180x180.png" />
+
+  <!-- Font e stili -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <!-- Script -->
+  <script src="script.js" defer></script>
+  <script src="footer.js" defer></script>
+  <script src="header.js" defer></script>
+
+  <!-- JSON-LD per Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Lorenzo Romeo",
+    "jobTitle": "Digital Marketing Consultant",
+    "image": "https://suimedia.it/img/loresmm.png",
+    "url": "https://suimedia.it/marketing-digitale-venezia-padova-chi-sono.html",
+    "description": "I help local businesses communicate better online with authentic digital marketing and communication strategies.",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "SUI media"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Venezia",
+      "addressRegion": "VE",
+      "addressCountry": "IT"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/lorenzo-romeo-smm"
+    ]
+  }
+  </script>
+
+  <!-- Stili interni -->
+  <style>
+    main {
+      max-width: 700px;
+      margin: 2rem auto;
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+      color: #222;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      color: #444;
+    }
+    .img-cerchio-container {
+      width: 300px;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 50%;
+      margin: 0 auto 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .img-cerchio {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cta-button {
+      display: inline-block;
+      background-color: #2c7a7b;
+      color: white;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .cta-button:hover {
+      background-color: #285e61;
+    }
+    .musica {
+      margin-left: 0.5rem;
+      font-size: 1.3rem;
+      vertical-align: middle;
+    }
+
+    /* Piano styles */
+    .piano {
+      position: relative;
+      width: 280px;
+      height: 150px;
+      user-select: none;
+      margin: 0 auto;
+    }
+    .white-keys {
+      display: flex;
+      position: relative;
+      z-index: 1;
+    }
+    .key.white {
+      background: white;
+      border: 1px solid #ccc;
+      width: 35px;
+      height: 150px;
+      box-sizing: border-box;
+      cursor: pointer;
+      color: transparent;
+      user-select: none;
+      border-radius: 0 0 5px 5px;
+      transition: background-color 0.2s ease;
+    }
+    .key.white:active {
+      background-color: #ddd;
+    }
+    .black-keys {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100px;
+      width: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .key.black {
+      position: absolute;
+      background: black;
+      width: 20px;
+      height: 100px;
+      z-index: 3;
+      pointer-events: auto;
+      cursor: pointer;
+      border-radius: 0 0 3px 3px;
+      transition: background-color 0.2s ease;
+    }
+    .key.black:active {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header id="header"></header>
+
+  <main>
+    <h1>Hello, I'm Lorenzo – Digital Marketing Consultant based in Italy</h1>
+    <p>
+      I work with local businesses in Italy to help them communicate better online.<br />
+      I’m open to international collaborations, especially in digital strategy, content design, and social media campaigns.<br />
+      Feel free to reach out for partnerships or projects.
+    </p>
+
+    <div class="img-cerchio-container">
+      <img src="img/loresmm.png" alt="Photo of Lorenzo Romeo, digital marketing consultant in Italy" class="img-cerchio" />
+    </div>
+
+    <a href="mailto:tuamail@example.com" class="cta-button">
+      Let’s collaborate <span class="musica">🎵</span>
+    </a>
+
+    <div class="piano" aria-label="Interactive piano keyboard" role="application" tabindex="0">
+      <div class="white-keys">
+        <div class="key white" data-note="C4"></div>
+        <div class="key white" data-note="D4"></div>
+        <div class="key white" data-note="E4"></div>
+        <div class="key white" data-note="F4"></div>
+        <div class="key white" data-note="G4"></div>
+        <div class="key white" data-note="A4"></div>
+        <div class="key white" data-note="B4"></div>
+        <div class="key white" data-note="C5"></div>
+      </div>
+
+      <div class="black-keys">
+        <div class="key black" style="left: 25px;" data-note="C#4"></div>
+        <div class="key black" style="left: 60px;" data-note="D#4"></div>
+        <!-- Nessun tasto nero tra E e F -->
+        <div class="key black" style="left: 135px;" data-note="F#4"></div>
+        <div class="key black" style="left: 170px;" data-note="G#4"></div>
+        <div class="key black" style="left: 205px;" data-note="A#4"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer></footer>
+
+  <script>
+    const noteFreq = {
+      'C4': 261.63, 'C#4': 277.18,
+      'D4': 293.66, 'D#4': 311.13,
+      'E4': 329.63,
+      'F4': 349.23, 'F#4': 369.99,
+      'G4': 392.00, 'G#4': 415.30,
+      'A4': 440.00, 'A#4': 466.16,
+      'B4': 493.88,
+      'C5': 523.25
+    };
+
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playNote(freq) {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1);
+      osc.stop(audioCtx.currentTime + 1);
+    }
+
+    document.querySelectorAll('.key').forEach(key => {
+      key.addEventListener('click', () => {
+        const note = key.dataset.note;
+        if (note && noteFreq[note]) {
+          playNote(noteFreq[note]);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
