@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+  http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Pagine in Italiano -->
+  <url>
+    <loc>https://venetosocialmedia.it/</loc>
+    <lastmod>2025-06-21</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://venetosocialmedia.it/servizi-social-media-marketing-venezia-padova.html</loc>
+    <lastmod>2025-06-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://venetosocialmedia.it/test-marketing-digitale.html</loc>
+    <lastmod>2025-06-21</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://venetosocialmedia.it/contatti-social-media-venezia-padova.html</loc>
+    <lastmod>2025-06-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://venetosocialmedia.it/marketing-digitale-venezia-padova-chi-sono.html</loc>
+    <lastmod>2025-06-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://venetosocialmedia.it/privacy.html</loc>
+    <lastmod>2025-06-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://venetosocialmedia.it/termini.html</loc>
+    <lastmod>2025-06-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://venetosocialmedia.it/risultato.html</loc>
+    <lastmod>2025-06-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://venetosocialmedia.it/about.html</loc>
+    <lastmod>2025-06-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://venetosocialmedia.it/contact.html</loc>
+    <lastmod>2025-06-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- English Version -->
+  <url>
+    <loc>https://venetosocialmedia.it/sample-work.html</loc>
+    <lastmod>2025-07-10</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://venetosocialmedia.it/about.html</loc>
+    <lastmod>2025-06-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://venetosocialmedia.it/contact.html</loc>
+    <lastmod>2025-06-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
