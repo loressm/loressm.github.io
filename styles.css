@@ -137,10 +137,20 @@ body {
   color: #fff;
   text-align: center;
   padding: 25px 0;
-  margin-top: 60px;
+  margin-top: auto;   /* ⬅️ il footer scende sempre in basso */
 }
 
 .footer-container {
   max-width: 1200px;
   margin: auto;
+}
+
+/* Sticky footer */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
 }
