@@ -162,7 +162,7 @@ footer, .site-footer {
 /* ================== Griglia dei BLOCCHI ================== */
 .content-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); /* permette ai blocchi di restringersi senza overflow */
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
@@ -182,7 +182,7 @@ footer, .site-footer {
   justify-content: flex-start;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   min-height: 350px;
-  overflow-wrap: break-word; /* evita che le parole lunghe causino overflow */
+  overflow-wrap: break-word; /* evita overflow testo */
 }
 
 /* Titoli e paragrafi */
@@ -207,10 +207,12 @@ footer, .site-footer {
   line-height: 1.6;
 }
 
-/* Immagini dentro i blocchi */
-.grid-item img {
+/* Immagini e canvas dentro i blocchi */
+.grid-item img,
+.grid-item canvas {
   width: 100%;
   height: auto;
+  max-width: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
