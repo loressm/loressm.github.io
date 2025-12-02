@@ -177,11 +177,9 @@ footer, .site-footer {
   border-radius: 15px;
   box-sizing: border-box;
   text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: block; /* testo e bottone si posizionano normalmente uno sotto l'altro */
   min-height: 350px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   overflow-wrap: break-word; /* evita overflow testo */
 }
 
