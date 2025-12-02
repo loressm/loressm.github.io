@@ -177,9 +177,9 @@ footer, .site-footer {
   border-radius: 15px;
   box-sizing: border-box;
   text-align: left;
-  display: block; /* testo e bottone si posizionano normalmente uno sotto l'altro */
+  display: block;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  overflow-wrap: break-word; /* evita overflow testo */
+  overflow-wrap: break-word;
 }
 
 /* Titoli e paragrafi */
@@ -192,6 +192,7 @@ footer, .site-footer {
 .grid-item p {
   font-size: 1.1rem;
   line-height: 1.6;
+  margin-bottom: 15px; /* migliora la spaziatura tra paragrafi */
 }
 
 /* Liste interne */
@@ -214,6 +215,17 @@ footer, .site-footer {
   border-radius: 10px;
 }
 
+/* CTA container per evitare sovrapposizioni del bottone */
+.cta-container {
+  margin-top: 20px; /* evita che il bottone tocchi il testo */
+}
+
+/* Assicura che il bottone si comporti bene nella griglia */
+.grid-item .btn-cta {
+  display: inline-block;
+  margin-top: 5px;
+}
+
 /* ================== Responsive ================== */
 @media (max-width: 768px) {
   .content-grid {
@@ -223,6 +235,6 @@ footer, .site-footer {
   }
 
   .grid-item {
-    min-height: auto; /* altezza si adatta al contenuto */
+    min-height: auto;
   }
 }
