@@ -157,3 +157,56 @@ footer, .site-footer {
     display: flex;
   }
 }
+
+/* ================== Griglia dei BLOCCHI ================== */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonne desktop */
+    gap: 20px; /* distanza tra i blocchi */
+    max-width: 1200px; /* larghezza massima della sezione */
+    margin: 0 auto; /* centra la griglia */
+    padding: 40px 20px; /* spaziatura interna */
+}
+
+.grid-item {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 20px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    min-height: 350px; /* altezza minima */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Titoli e paragrafi dei blocchi */
+.grid-item h2, .grid-item h3 {
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+}
+
+.grid-item p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Immagini dentro i blocchi */
+.grid-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ================== Responsive ================== */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr; /* 1 colonna mobile */
+        gap: 15px;
+        padding: 20px 10px;
+    }
+}
+
