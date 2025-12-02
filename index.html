@@ -22,75 +22,12 @@
     </section>
 
 <section class="content-grid">
-
-<section class="content-grid">
-
-  <!-- Blocco 1 -->
-  <div class="grid-item">
-    <h3 class="title gold">Quanto fanno vendere i social?</h3>
-    <p>
-      Quante volte hai sentito dire: "<strong>Se non sei presente online, non esisti</strong>"?  
-      Oggi però, "esistere" non basta più. Ecco che entra in gioco il <strong>social media marketing</strong>, che significa <strong>cogliere le opportunità derivanti dalla potenza dei social a vantaggio della tua impresa</strong>.
-    </p>
-    <p>
-      Affinché questa strategia sia efficace, è fondamentale che sia <strong>coerente e continuativa nel tempo</strong>, in modo da <strong>raggiungere il pubblico giusto</strong> e <strong>intercettare i suoi desideri e le sue necessità</strong>, prima che lo faccia qualcun altro.
-    </p>
-  </div>
-
-  <!-- Blocco 2 (vuoto al momento, pronto per grafico o contenuto) -->
-  <div class="grid-item">
-    <h3 class="title orange"><!-- Titolo del grafico --></h3>
-    <p><!-- Descrizione del grafico --></p>
-    <canvas id="chartBlock2" width="400" height="400"></canvas>
-  </div>
-
-  <!-- Blocco 3 -->
-  <div class="grid-item">
-    <h3 class="title green">I benefici concreti per la tua attività</h3>
-    <ul class="benefits-list">
-      <li>
-        <span class="icon blue">&#128200;</span> <strong>Pianificazione strategica:</strong> Creo una presenza solida sui social e attivo campagne pubblicitarie nei momenti chiave dell’anno.
-      </li>
-      <li>
-        <span class="icon green">&#127970;</span> <strong>Riconoscibilità locale:</strong> Rendo la tua azienda un punto di riferimento nel territorio, aumentando visibilità e fiducia.
-      </li>
-      <li>
-        <span class="icon orange">&#128221;</span> <strong>Contenuti mirati:</strong> Progetto contenuti regolari e coinvolgenti per attrarre e mantenere l’attenzione.
-      </li>
-      <li>
-        <span class="icon purple">&#128172;</span> <strong>Interazione costante:</strong> Gestisco risposte e interazioni per rafforzare il legame con i clienti e migliorarne la soddisfazione.
-      </li>
-    </ul>
-  </div>
-
-  <!-- Blocco 4 (vuoto al momento, pronto per grafico o contatore) -->
-  <div class="grid-item">
-    <h3 class="title blue"><!-- Titolo del contatore --></h3>
-    <p><!-- Descrizione del contatore --></p>
-    <div id="counterBlock4"><!-- Contatore animato o grafico --></div>
-  </div>
-
-  <!-- Blocco 5 -->
-  <div class="grid-item">
-    <h3 class="title purple">Non farti superare dagli altri</h3>
-    <p>
-      C'è un pubblico là fuori che ha bisogno dei tuoi <strong>prodotti</strong> e <strong>servizi</strong>, ma non ti conosce ancora. Perché non aiutarlo a farti trovare <strong>prima</strong> che ci pensi la concorrenza a soddisfare le sue richieste?
-    </p>
-    <p>
-      Contattami senza impegno e vediamo insieme come far crescere il tuo <strong>brand</strong>.
-    </p>
-    <div class="cta-container">
-      <a href="contatti.html" class="btn-cta">Contattami</a>
-    </div>
-  </div>
-
-  <!-- Blocco 6 (vuoto al momento, pronto per immagine o contenuto visuale) -->
-  <div class="grid-item">
-    <h3 class="title pink"><!-- Titolo immagine o visual --></h3>
-    <p><!-- Descrizione immagine o visual --></p>
-    <img src="" alt="Immagine illustrativa" />
-  </div>
-
+  <div class="grid-item">Blocco 1</div>
+  <div class="grid-item">Blocco 2</div>
+  <div class="grid-item">Blocco 3</div>
+  <div class="grid-item">Blocco 4</div>
+  <div class="grid-item">Blocco 5</div>
+  <div class="grid-item">Blocco 6</div>
 </section>
 
   </main>
@@ -100,20 +37,6 @@
 
   <script src="header.js"></script>
   <script src="footer.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const items = document.querySelectorAll('.grid-item');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in');
-      }
-    });
-  }, { threshold: 0.3 });
-
-  items.forEach(item => observer.observe(item));
-});
-</script>
 </body>
 </html>
