@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Veneto Social Media – Social Media Manager in Veneto</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -63,11 +65,16 @@
         </ul>
       </div>
 
-      <!-- Blocco 4 -->
+      <!-- Blocco 4 – contatore -->
       <div class="grid-item">
-        <h3>Titolo del contatore</h3>
-        <p>Descrizione del contatore</p>
-        <div id="counterBlock4"></div>
+        <h3>Tempo medio giornaliero trascorso sui social</h3>
+        <p>Fonte: Digital 2025, We Are Social</p>
+        <div class="counter-container">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div class="counter" id="counter">0</div>
+            <div class="unit" style="font-size: 1.8rem;">minuti</div>
+          </div>
+        </div>
       </div>
 
       <!-- Blocco 5 -->
@@ -84,7 +91,7 @@
         </div>
       </div>
 
-      <!-- Blocco 6 -->
+      <!-- Blocco 6 – immagine -->
       <div class="grid-item">
         <img src="img/ragazza.png" alt="Persona che cerca servizi di marketing digitale e pubblicità nelle province di Venezia e Padova usando lo smartphone" />
       </div>
@@ -98,32 +105,71 @@
   <script src="header.js"></script>
   <script src="footer.js"></script>
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
   <!-- Script grafico a torta -->
   <script>
-  const ctx = document.getElementById('socialPieChart').getContext('2d');
+  document.addEventListener("DOMContentLoaded", function () {
+      const canvas = document.getElementById('socialPieChart');
+      let pieChartInitialized = false;
 
-  new Chart(ctx, {
-      type: 'pie',
-      data: {
-          labels: ['Instagram', 'TikTok', 'Facebook', 'YouTube', 'Pinterest'],
-          datasets: [{
-              data: [32, 27, 18, 15, 8],
-              backgroundColor: [
-                  '#F87171',
-                  '#60A5FA',
-                  '#34D399',
-                  '#FBBF24',
-                  '#A78BFA'
-              ]
-          }]
-      },
-      options: {
-          responsive: true,
-          maintainAspectRatio: false
-      }
+      const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting && !pieChartInitialized) {
+                  const ctx = canvas.getContext('2d');
+
+                  new Chart(ctx, {
+                      type: 'doughnut',
+                      data: {
+                          labels: ['Instagram', 'Facebook', 'TikTok'],
+                          datasets: [{
+                              label: 'Percentuale utenti',
+                              data: [55.9, 53.2, 14.5],
+                              backgroundColor: ['#E1306C', '#1877F2', '#FFD700'],
+                              hoverOffset: 30
+                          }]
+                      },
+                      options: {
+                          cutout: '65%',
+                          animation: { duration: 4000 },
+                          plugins: {
+                              tooltip: {
+                                  callbacks: {
+                                      label: function (tooltipItem) {
+                                          const label = tooltipItem.label || '';
+                                          const value = tooltipItem.raw || 0;
+                                          return label + ': ' + value.toFixed(1) + '% di impatto sugli acquisti sui social.';
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  });
+
+                  pieChartInitialized = true;
+                  observer.unobserve(canvas);
+              }
+          });
+      }, { threshold: 0.5 });
+
+      observer.observe(canvas);
+  });
+
+  // Animazione contatore (Blocco 4)
+  document.addEventListener("DOMContentLoaded", function () {
+      const counterElement = document.getElementById("counter");
+      const targetValue = 135;
+      let current = 0;
+
+      const step = () => {
+          if (current < targetValue) {
+              current += 1;
+              counterElement.textContent = current;
+              setTimeout(step, 20);
+          } else {
+              counterElement.textContent = targetValue;
+          }
+      };
+
+      step();
   });
   </script>
 
