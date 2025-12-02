@@ -160,53 +160,99 @@ footer, .site-footer {
 
 /* ================== Griglia dei BLOCCHI ================== */
 .content-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 colonne desktop */
-    gap: 20px; /* distanza tra i blocchi */
-    max-width: 1200px; /* larghezza massima della sezione */
-    margin: 0 auto; /* centra la griglia */
-    padding: 40px 20px; /* spaziatura interna */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* colonne flessibili */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
+/* ================== Blocchi uniformi ================== */
 .grid-item {
-    background-color: #ffffff;
-    color: #333333;
-    padding: 20px;
-    border-radius: 15px;
-    box-sizing: border-box;
-    text-align: center;
-    min-height: 350px; /* altezza minima */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  color: #333333;
+  padding: 20px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0; /* animazione fade-in */
+  transform: translateY(50px);
+  min-height: 350px;
 }
 
-/* Titoli e paragrafi dei blocchi */
-.grid-item h2, .grid-item h3 {
-    margin-bottom: 10px;
-    font-family: 'Playfair Display', serif;
+/* Forzare altezza uguale in ogni riga */
+.grid-item {
+  display: flex;
+  flex-direction: column;
 }
 
-.grid-item p {
-    font-size: 1.1rem;
-    line-height: 1.6;
+/* Titoli dei blocchi */
+.grid-item h3.title {
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: white;
+  word-break: break-word; /* evita overflow */
+}
+
+/* Fade-in animazione */
+.grid-item.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Lista benefici */
+.benefits-list {
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.benefits-list li {
+  margin-bottom: 12px;
+}
+
+.benefits-list .icon {
+  font-size: 1.2rem;
+  margin-right: 8px;
+}
+
+/* CTA centrata */
+.cta-container {
+  margin-top: 15px;
+  text-align: center;
 }
 
 /* Immagini dentro i blocchi */
 .grid-item img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 /* ================== Responsive ================== */
-@media (max-width: 768px) {
-    .content-grid {
-        grid-template-columns: 1fr; /* 1 colonna mobile */
-        gap: 15px;
-        padding: 20px 10px;
-    }
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    padding: 30px 15px;
+  }
 }
 
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr; /* 1 colonna mobile */
+    padding: 20px 10px;
+    gap: 15px;
+  }
+}
