@@ -1,18 +1,10 @@
-// ======================
-// GRAFICO A TORTA BLOCCO 2 - Animazione di entrata
-// ======================
-
 const ctx = document.getElementById("chartBlock2").getContext("2d");
 
 const data = {
   labels: ["Instagram", "Facebook", "TikTok"],
   datasets: [{
     data: [55.9, 53.2, 14.5],
-    backgroundColor: [
-      "#FCD34D", // Instagram
-      "#111827", // Facebook
-      "#3B82F6"  // TikTok
-    ],
+    backgroundColor: ["#FCD34D", "#111827", "#3B82F6"],
     borderWidth: 0,
     hoverOffset: 12
   }]
@@ -20,11 +12,16 @@ const data = {
 
 const options = {
   responsive: true,
-  animation: {
-    animateRotate: true, // rotazione
-    animateScale: true,  // effetto "grow"
-    duration: 1500,      // durata animazione in ms
-    easing: 'easeOutCubic'
+  animations: {
+    tension: {
+      duration: 1500,
+      easing: 'easeOutCubic'
+    },
+    radius: {
+      from: 0,   // effetto "cresci dal centro"
+      duration: 1500,
+      easing: 'easeOutCubic'
+    }
   },
   plugins: {
     legend: {
