@@ -205,4 +205,30 @@ footer, .site-footer {
   height: auto !important; /* Imposta l'altezza automaticamente in base alla larghezza */
 }
 
+/* CONTATORE */
+#counter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#counter {
+  font-size: 6rem;        /* Numero grande */
+  font-weight: 700;       /* Grassetto */
+  color: #111827;         /* Nero */
+  text-align: center;
+  line-height: 1;          /* Rimuove spazio extra sotto il numero */
+}
+
+.counter-label {
+  font-size: 1.2rem;      /* Più piccolo rispetto al numero */
+  color: #111827;
+  margin-top: 0;           /* Nessun margine */
+  line-height: 1;          /* Rimuove ulteriore spazio verticale */
+  text-align: center;
+}
+
+
 
