@@ -21,6 +21,45 @@ html, body {
   overflow-x: hidden;
 }
 
+/* HEADER e NAV base */
+.site-header {
+  background: #111827;
+  color: #fff;
+  width: 100%;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+
+.logo img {
+  height: 45px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-menu .btn-menu {
+  background: #FCD34D;
+  color: #111827;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
 /* MAIN */
 main {
   flex: 1;
