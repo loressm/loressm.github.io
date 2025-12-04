@@ -189,3 +189,13 @@ footer, .site-footer {
     display: flex;
   }
 }
+
+/* bottone cta spazio */
+.content-item p {
+  margin-bottom: 30px; /* Aggiunge spazio sotto il paragrafo */
+}
+
+.btn-cta {
+  margin-top: 20px; /* Aggiunge spazio sopra il bottone */
+}
+
