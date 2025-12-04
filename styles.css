@@ -366,6 +366,36 @@ footer, .site-footer {
   border-radius: 4px;
 }
 
+/* --- ANIMAZIONI ELEGANTI ON SCROLL --- */
+
+/* Stato iniziale (invisibile) */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Stato visibile */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Effetto circle grow elegante */
+.circular {
+  opacity: 0;
+  transform: scale(0.4);   /* parte molto piccola */
+  transition: transform 0.9s ease-out, opacity 0.8s ease-out;
+  will-change: transform, opacity; /* performance */
+}
+
+.circular.visible {
+  opacity: 1;
+  transform: scale(1);     /* torna alla dimensione reale */
+}
+
+
+
 
 
 
