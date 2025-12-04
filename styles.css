@@ -234,7 +234,7 @@ footer, .site-footer {
 }
 
 #counter {
-  font-size: 6rem;
+  font-size: 8rem; /* grandezza contatore */
   font-weight: 700;
   color: #111827;
   text-align: center;
@@ -308,6 +308,65 @@ footer, .site-footer {
     color: #b38f00;
     text-decoration: underline;
 }
+
+/* van gogh */
+.image-caption {
+  text-align: center;
+  font-style: italic;
+  color: #666; /* colore discreto, non troppo forte */
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+/* ragazza */
+.content-item {
+  display: flex;
+  justify-content: center; /* orizzontalmente */
+  align-items: center;    /* verticalmente, se il contenitore ha altezza definita */
+  flex-direction: column; /* utile se aggiungi testo o didascalia sotto */
+}
+
+/* TITOLI GRANDI */
+/* Titoli grandi blocchi 1, 3, 5 */
+.big-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.3;
+  color: #111827;
+}
+
+/* TITOLI COLORATI */
+/* Evidenziazione dei titoli dei punti elenco */
+.highlight-giallo {
+  background-color: #FFD700; /* oro chiaro */
+  color: #111827;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.highlight-verde {
+  background-color: #28A745; /* verde chiaro */
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.highlight-arancio {
+  background-color: #FF8C00; /* arancio */
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.highlight-viola {
+  background-color: #9B59B6; /* viola */
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+
 
 
 
