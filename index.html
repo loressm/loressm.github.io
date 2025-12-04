@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Veneto Social Media – Social Media Manager in Veneto</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -21,66 +22,97 @@
       </div>
     </section>
 
-<section class="content-grid">
+    <!-- Usando Flexbox invece di Grid -->
+    <section class="content-flex">
 
-  <!-- Blocco 1 -->
-  <div class="grid-item">
-    <h3>Quanto fanno vendere i social?</h3>
-    <p>
-      Quante volte hai sentito dire: "<strong>Se non sei presente online, non esisti</strong>"?  
-      Oggi però, "esistere" non basta più. Ecco che entra in gioco il <strong>social media marketing</strong>, che significa <strong>sfruttare la potenza dei social a vantaggio della tua impresa</strong>.
-    </p>
-    <p>
-      Affinché questa strategia sia efficace, è fondamentale che sia <strong>coerente e continuativa nel tempo</strong>, in modo da <strong>raggiungere il pubblico giusto</strong> e <strong>intercettare i suoi desideri e le sue necessità</strong>.
-    </p>
-  </div>
+      <!-- Blocco 1 -->
+      <div class="content-item">
+        <h3>Quanto fanno vendere i social?</h3>
+        <p>
+          Quante volte hai sentito dire: "<strong>Se non sei presente online, non esisti</strong>"?  
+          Oggi però, "esistere" non basta più. Ecco che entra in gioco il <strong>social media marketing</strong>, che significa <strong>sfruttare la potenza dei social a vantaggio della tua impresa</strong>.
+        </p>
+        <p>
+          Affinché questa strategia sia efficace, è fondamentale che sia <strong>coerente e continuativa nel tempo</strong>, in modo da <strong>raggiungere il pubblico giusto</strong> e <strong>intercettare i suoi desideri e le sue necessità</strong>.
+        </p>
+      </div>
 
-  <!-- Blocco 2 (vuoto al momento, pronto per grafico o contenuto) -->
-  <div class="grid-item">
-    <h3>Titolo del grafico</h3>
-    <p>Descrizione del grafico</p>
-    <canvas id="chartBlock2" width="400" height="400"></canvas>
-  </div>
+      <!-- Blocco 2: grafico a ciambella (donut chart) -->
+      <div class="content-item">
+        <h3>Impatto sugli Acquisti</h3>
+        <p>Distribuzione degli acquisti sui social media.</p>
+        <canvas id="chartBlock2" width="400" height="400"></canvas>
+        <script>
+          const ctx = document.getElementById('chartBlock2').getContext('2d');
+          new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+              labels: ['Instagram', 'Facebook', 'TikTok'],
+              datasets: [{
+                data: [50, 49, 14],
+                backgroundColor: [
+                  '#C13584', // Instagram
+                  '#1877F2', // Facebook
+                  '#000000'  // TikTok
+                ],
+                borderColor: '#ffffff', // bordo bianco fine
+                borderWidth: 2
+              }]
+            },
+            options: {
+              cutout: '65%', // buco interno (regola quanto vuoi)
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  callbacks: {
+                    label: t => `${t.label}: ${t.raw}%`
+                  }
+                }
+              },
+              animation: {
+                animateRotate: true,
+                animateScale: true
+              }
+            }
+          });
+        </script>
+      </div>
 
-  <!-- Blocco 3 -->
-  <div class="grid-item">
-    <h3>I benefici concreti per la tua attività</h3>
-    <ul>
-      <li><strong>Posizionamento & Campagne</strong> Creo una presenza solida sui social e attivo campagne pubblicitarie nei momenti chiave dell’anno.</li>
-      <li><strong>Riconoscibilità locale:</strong> Rendo la tua azienda un punto di riferimento nel territorio, aumentando visibilità e fiducia.</li>
-      <li><strong>Contenuti mirati:</strong> Progetto contenuti regolari e coinvolgenti per attrarre e mantenere l’attenzione.</li>
-      <li><strong>Interazione costante:</strong> Gestisco risposte e interazioni per rafforzare il legame con i clienti e migliorarne la soddisfazione.</li>
-    </ul>
-  </div>
+      <!-- Blocco 3 -->
+      <div class="content-item">
+        <h3>I benefici concreti per la tua attività</h3>
+        <ul>
+          <li><strong>Posizionamento & Campagne</strong> Creo una presenza solida sui social e attivo campagne pubblicitarie nei momenti chiave dell’anno.</li>
+          <li><strong>Riconoscibilità locale:</strong> Rendo la tua azienda un punto di riferimento nel territorio, aumentando visibilità e fiducia.</li>
+          <li><strong>Contenuti mirati:</strong> Progetto contenuti regolari e coinvolgenti per attrarre e mantenere l’attenzione.</li>
+          <li><strong>Interazione costante:</strong> Gestisco risposte e interazioni per rafforzare il legame con i clienti e migliorarne la soddisfazione.</li>
+        </ul>
+      </div>
 
-  <!-- Blocco 4 (vuoto al momento, pronto per grafico o contatore) -->
-  <div class="grid-item">
-    <h3>Titolo del contatore</h3>
-    <p>Descrizione del contatore</p>
-    <div id="counterBlock4"></div>
-  </div>
+      <!-- Blocco 4 -->
+      <div class="content-item">
+        <h3>Titolo del contatore</h3>
+        <p>Descrizione del contatore</p>
+        <div id="counterBlock4"></div>
+      </div>
 
-  <!-- Blocco 5 -->
-  <div class="grid-item">
-    <h3>Non farti superare dagli altri</h3>
-    <p>
-      C'è un pubblico là fuori che ha bisogno dei tuoi <strong>prodotti</strong> e <strong>servizi</strong>, ma non ti conosce ancora. Perché non aiutarlo a farti trovare?
-    </p>
-    <p>
-      Contattami senza impegno e vediamo insieme come far crescere il tuo <strong>brand</strong>.
-    </p>
-    <div class="cta-container">
-      <a href="contatti.html" class="btn-cta">Contattami</a>
-    </div>
-  </div>
-
-<!-- Blocco 6 -->
-<div class="grid-item">
-  <img src="img/ragazza.png" alt="Persona che cerca servizi di marketing digitale e pubblicità nelle province di Venezia e Padova usando lo smartphone" />
+<!-- Blocco 5 -->
+<div class="content-item">
+  <h3>Non farti superare dagli altri</h3>
+  <p>
+    C'è un pubblico là fuori che ha bisogno dei tuoi <strong>prodotti</strong> e <strong>servizi</strong>, ma non ti conosce ancora. Perché non aiutarlo a farti trovare?
+  </p>
+  <p>
+    Contattami senza impegno e vediamo insieme come far crescere il tuo <strong>brand</strong>.
+  </p>
 </div>
 
-</section>
+      <!-- Blocco 6 -->
+      <div class="content-item">
+        <img src="img/ragazza.png" alt="Persona che cerca servizi di marketing digitale e pubblicità nelle province di Venezia e Padova usando lo smartphone" />
+      </div>
 
+    </section>
   </main>
 
   <!-- Footer dinamico -->
@@ -88,28 +120,6 @@
 
   <script src="header.js"></script>
   <script src="footer.js"></script>
-  
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-const ctx = document.getElementById('chartBlock2').getContext('2d');
-new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-        labels: ['Instagram', 'Facebook', 'TikTok'],
-        datasets: [{
-            data: [50, 49, 14],
-            backgroundColor: ['#C13584', '#1877F2', '#000000'],
-            borderColor: '#ffffff',
-            borderWidth: 2
-        }]
-    },
-    options: {
-        cutout: '65%',
-        plugins: { legend: { display: false } },
-        animation: { animateRotate: true, animateScale: true }
-    }
-});
-</script>
 
 </body>
 </html>
