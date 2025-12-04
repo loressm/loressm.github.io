@@ -110,90 +110,57 @@ footer, .site-footer {
   background: #111827;
   color: #fff;
   text-align: center;
-  padding: 25px 0;
+  padding: 2.5rem 1rem;
   width: 100%;
   box-sizing: border-box;
   margin-top: auto;
+  font-family: 'Roboto', sans-serif;
 }
 
 .footer-container {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
 
-/* HEADER e NAV base */
-.site-header {
-  background: #111827;
-  color: #fff;
-  width: 100%;
+/* Testo principale del footer */
+.footer-text {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.header-container {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 20px;
+/* Link aggiuntivi: Termini e Cookie */
+.footer-links {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
 }
 
-.logo img {
-  height: 45px;
-}
-
-.nav-menu {
-  display: flex;
-  gap: 25px;
-}
-
-.nav-menu a {
-  color: #fff;
+.footer-links a {
+  color: #ffcc00;
   text-decoration: none;
-  font-weight: 500;
+  margin: 0 5px;
 }
 
-.nav-menu .btn-menu {
-  background: #FCD34D;
-  color: #111827;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 600;
+.footer-links a:hover {
+  text-decoration: underline;
 }
 
-.site-footer {
-  background-color: #1a1a1a; /* colore scuro e professionale */
-  color: #fff;
-  padding: 2rem 1rem;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
+/* Logo del footer */
+.footer-logo img {
+  height: 60px; /* dimensione del logo */
+  width: auto;
+  display: block;
+  margin: 0 auto;
 }
 
+/* Link email principale */
 .site-footer a {
-  color: #ffcc00; /* evidenzia email con colore giallo */
+  color: #ffcc00;
   text-decoration: none;
 }
 
 .site-footer a:hover {
   text-decoration: underline;
 }
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-text {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.footer-logo img {
-  height: 60px; /* puoi regolare la dimensione del logo */
-  width: auto;
-  display: block;
-  margin: 0 auto;
-}
-
 
 /* HAMBURGER */
 .hamburger {
