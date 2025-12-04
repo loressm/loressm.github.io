@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Test Strategia Social Media – Valuta il tuo Marketing | Veneto Social Media</title>
+  <meta name="description" content="Fai il test rapido di Veneto Social Media per scoprire il livello della tua strategia social: awareness, interesse, conversione o loyalty. Scopri subito dove migliorare!" />
+  <meta name="keywords" content="test marketing digitale, quiz strategia social, autovalutazione social media, funnel marketing, social media test" />
+
+  <!-- Open Graph per social -->
+  <meta property="og:title" content="Test Strategia Social Media – Veneto Social Media" />
+  <meta property="og:description" content="Valuta facilmente il livello della tua strategia social con il nostro quiz gratuito. Scopri come migliorare la presenza online!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://venetosocialmedia.it/test-marketing-digitale.html" />
+  <meta property="og:image" content="https://venetosocialmedia.it/img/logo2.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Test Strategia Social Media – Veneto Social Media" />
+  <meta name="twitter:description" content="Valuta facilmente il livello della tua strategia social con il nostro quiz gratuito. Scopri come migliorare la presenza online!" />
+  <meta name="twitter:image" content="https://venetosocialmedia.it/img/logo2.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://venetosocialmedia.it/img/favicon_centered_32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://venetosocialmedia.it/img/favicon_centered_16x16.png" />
+  <link rel="shortcut icon" href="https://venetosocialmedia.it/img/favicon_centered.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://venetosocialmedia.it/img/favicon_centered_180x180.png" />
+
+  <!-- Font e stili -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="test/test.css" />
+
+  <!-- Script -->
+  <script src="script.js" defer></script>
+  <script src="footer.js" defer></script>
+  <script src="header.js" defer></script>
+  <script src="test/test.js" defer></script>
+
+  <!-- Stili inline per layout funnel -->
+  <style>
+    /* Funnel centrato verticalmente */
+    .content-grid {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 600px;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .grid-item {
+      flex: 1;
+      box-shadow: none;
+      border: none;
+      padding: 0;
+    }
+    #funnel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      margin-left: 2rem;
+    }
+    .funnel-level {
+      color: white;
+      font-weight: 700;
+      padding: 1.5rem 1.8rem;
+      text-align: center;
+      border-radius: 4px;
+      font-size: 1.3rem;
+    }
+    .level-1 { background-color: #f44336; width: 100%; max-width: 280px; }
+    .level-2 { background-color: #ff9800; width: 90%; max-width: 250px; }
+    .level-3 { background-color: #ffc107; width: 75%; max-width: 210px; color: #333; }
+    .level-4 { background-color: #4caf50; width: 60%; max-width: 170px; }
+    .level-5 { background-color: #2196f3; width: 45%; max-width: 130px; }
+    @media (max-width: 768px) {
+      .content-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      #funnel {
+        margin-left: 0;
+        margin-top: 1.5rem;
+        width: 100%;
+        max-width: none;
+        align-items: center;
+      }
+    }
+  </style>
+
+  <!-- JSON-LD per quiz -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Test Strategia Social Media",
+    "description": "Quiz gratuito per valutare la tua strategia social media e marketing digitale.",
+    "url": "https://venetosocialmedia.it/test-marketing-digitale.html"
+  }
+  </script>
+</head>
+<body>
+  <header id="header"></header>
+
+  <main>
+    <section class="content-grid">
+      <!-- Colonna domande -->
+      <div class="grid-item">
+        <h3>Quiz rapido: da dove partire?</h3>
+        <form id="quiz-form">
+          <label for="q1">1. Come arrivano le persone al tuo profilo?</label>
+          <select name="q1" id="q1">
+            <option value="1">Non arrivano mai o quasi mai</option>
+            <option value="2">Ogni tanto per caso (hashtag, reel...)</option>
+            <option value="3">Tramite collaborazioni o contenuti condivisi</option>
+            <option value="4">Da altri tuoi canali (es. sito, newsletter)</option>
+            <option value="5">Ti cercano direttamente</option>
+          </select>
+
+          <label for="q2">2. Cosa succede quando pubblichi?</label>
+          <select name="q2" id="q2">
+            <option value="1">Nessuna reazione</option>
+            <option value="2">Qualche like o visualizzazione</option>
+            <option value="3">Qualche commento o condivisione</option>
+            <option value="4">Salvataggi, risposte o DM</option>
+            <option value="5">Community attiva e coinvolta</option>
+          </select>
+
+          <label for="q3">3. Chi visita il tuo profilo capisce cosa offri?</label>
+          <select name="q3" id="q3">
+            <option value="1">No, è poco chiaro</option>
+            <option value="2">Si intuisce ma è vago</option>
+            <option value="3">Chi guarda bene lo capisce</option>
+            <option value="4">È chiaro, ma poco coinvolgente</option>
+            <option value="5">È chiaro e coinvolge</option>
+          </select>
+
+          <label for="q4">4. Quanto spesso ricevi richieste o vendite?</label>
+          <select name="q4" id="q4">
+            <option value="1">Mai</option>
+            <option value="2">Raramente</option>
+            <option value="3">Chiedono ma non concludono</option>
+            <option value="4">Ogni tanto concludono</option>
+            <option value="5">Regolarmente</option>
+          </select>
+
+          <label for="q5">5. I clienti tornano o parlano di te?</label>
+          <select name="q5" id="q5">
+            <option value="1">No</option>
+            <option value="2">Qualcuno ogni tanto</option>
+            <option value="3">Qualcuno mi consiglia</option>
+            <option value="4">Ho clienti che tornano</option>
+            <option value="5">Ho clienti fedeli che mi consigliano</option>
+          </select>
+
+          <button type="submit" class="btn-cta" style="margin-top: 1.5rem;">Vedi il tuo risultato</button>
+        </form>
+      </div>
+
+      <!-- Colonna funnel -->
+      <div class="grid-item" id="funnel">
+        <div class="funnel-level level-1">Awareness</div>
+        <div class="funnel-level level-2">Interest</div>
+        <div class="funnel-level level-3">Consideration</div>
+        <div class="funnel-level level-4">Conversion</div>
+        <div class="funnel-level level-5">Loyalty</div>
+      </div>
+    </section>
+  </main>
+
+  <footer></footer>
+</body>
+</html>
