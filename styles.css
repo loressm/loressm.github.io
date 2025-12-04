@@ -28,31 +28,42 @@ main {
 
 /* HERO */
 .hero {
-  background: #111827;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #4b0082 60%, #ff8c00 100%);
   color: #fff;
   padding: 100px 20px;
   text-align: center;
 }
 
 .hero-content h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin-bottom: 20px;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .hero-content p {
-  font-size: 1.2rem;
-  max-width: 600px;
+  font-size: 1.25rem;
+  max-width: 650px;
   margin: 0 auto 30px;
+  line-height: 1.6;
 }
 
 .btn-cta {
   background: #FCD34D;
   color: #111827;
-  padding: 14px 26px;
-  border-radius: 8px;
-  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
   text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(252, 211, 77, 0.4);
+}
+
+.btn-cta:hover {
+  background-color: #b38f00;
+  color: #fff;
 }
 
 /* CONTENT FLEX */
@@ -237,3 +248,66 @@ footer, .site-footer {
   line-height: 1;
   text-align: center;
 }
+
+/* Blocco 4: immagine circolare */
+.content-item img.circular {
+  width: 100%;       /* occupa tutta la larghezza del blocco */
+  max-width: 300px;  /* dimensione massima del cerchio */
+  height: auto;
+  border-radius: 50%; /* rende l'immagine circolare */
+  object-fit: cover;  /* mantiene proporzioni e ritaglia se necessario */
+  display: block;
+  margin: 0 auto;    /* centra l'immagine */
+}
+
+/* ESTETICA CONTATORE */
+.counter-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+    padding: 20px 0;
+}
+
+.counter {
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;  /* numero grande, adattabile */
+    font-weight: 700;
+    color: #111827;
+    line-height: 1;
+    margin-bottom: 0;
+}
+
+.unit {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #555;
+    text-align: center;
+    margin-top: 0;
+    line-height: 1;
+}
+
+/* Link fonte piccolo e centrato sotto il titolo */
+.counter-source {
+    font-size: 0.8rem;
+    color: #555;
+    text-align: center;
+    margin: 5px 0 15px 0;
+}
+
+.counter-source a {
+    color: #FFD700; /* oro come nel vecchio sito */
+    font-weight: normal;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.counter-source a:hover {
+    color: #b38f00;
+    text-decoration: underline;
+}
+
+
+
