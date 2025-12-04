@@ -160,6 +160,41 @@ footer, .site-footer {
   font-weight: 600;
 }
 
+.site-footer {
+  background-color: #1a1a1a; /* colore scuro e professionale */
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.site-footer a {
+  color: #ffcc00; /* evidenzia email con colore giallo */
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-text {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-logo img {
+  height: 60px; /* puoi regolare la dimensione del logo */
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+
 /* HAMBURGER */
 .hamburger {
   display: none;
