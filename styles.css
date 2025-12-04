@@ -190,7 +190,7 @@ footer, .site-footer {
   }
 }
 
-/* bottone cta spazio */
+/* BOTTONE CTA SPAZIO */
 .content-item p {
   margin-bottom: 30px; /* Aggiunge spazio sotto il paragrafo */
 }
@@ -198,4 +198,11 @@ footer, .site-footer {
 .btn-cta {
   margin-top: 20px; /* Aggiunge spazio sopra il bottone */
 }
+
+/* Rendi il GRAFICO responsivo */
+.content-item canvas {
+  width: 100% !important;  /* Fa sì che il canvas occupi tutta la larghezza disponibile */
+  height: auto !important; /* Imposta l'altezza automaticamente in base alla larghezza */
+}
+
 
