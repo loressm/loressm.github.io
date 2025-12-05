@@ -435,6 +435,58 @@ footer, .site-footer {
   transform: scale(1);     /* torna alla dimensione reale */
 }
 
+/* PADDING PAGINE */
+/* =========================================================
+   FIX PAGINE TESTUALI: Termini, Privacy, Risultato Test
+   ========================================================= */
+
+/* Contenitore principale delle pagine testuali */
+.content-grid {
+  max-width: 900px;        /* larghezza elegante e leggibile */
+  margin: 0 auto;          /* centra la pagina */
+  padding: 40px 20px;      /* spazio dai bordi (risolve il tuo problema) */
+  display: block;          /* garantisce comportamento consistente */
+}
+
+/* Ogni sezione interna */
+.grid-item {
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+}
+
+/* Spaziatura titoli e paragrafi */
+.content-grid h2,
+.content-grid h3,
+.content-grid h4 {
+  margin-bottom: 15px;
+  margin-top: 25px;
+  line-height: 1.3;
+}
+
+.content-grid p,
+.content-grid ul,
+.content-grid li {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* Liste più eleganti */
+.content-grid ul {
+  padding-left: 20px;
+}
+
+/* Adattamento mobile */
+@media (max-width: 600px) {
+  .content-grid {
+    padding: 30px 15px;
+  }
+  .grid-item {
+    padding: 15px;
+  }
+}
+
 
 
 
