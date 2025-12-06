@@ -487,6 +487,17 @@ footer, .site-footer {
   }
 }
 
+/* --- FIX MENU MOBILE SU CONTATTAMI --- */
+.site-header, #header {
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-menu {
+  z-index: 2000;
+}
+
+
 
 
 
