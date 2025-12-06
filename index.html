@@ -59,7 +59,7 @@
         </ul>
       </div>
 
-      <!-- Blocco 4: immagine nottestellata.jpg -->
+      <!-- Blocco 4: immagine circolare -->
       <div class="content-item reveal">
         <img src="img/nottestellata.jpg" 
              alt="Immagine nottestellata" 
@@ -90,21 +90,27 @@
   <!-- Footer dinamico -->
   <div id="footer"></div>
 
+  <!-- COOKIE BANNER -->
+  <div id="cookie-banner" class="cookie-banner">
+    <p>
+      Questo sito utilizza solo <strong>cookie tecnici</strong> necessari al suo funzionamento.
+      Non vengono utilizzati cookie di profilazione.
+      <a href="/privacy.html">Leggi la Privacy Policy</a>
+    </p>
+    <button id="cookie-accept">Ok, ho capito</button>
+  </div>
+
   <!-- JS -->
   <script src="header.js"></script>
   <script src="footer.js"></script>
   <script src="counter.js"></script>
 
-  <!-- Script reveal animazioni -->
+  <!-- Script reveal animazioni + cookie banner -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-      const options = {
-        threshold: 0.15
-      };
-
+    document.addEventListener("DOMContentLoaded", function () {
+      // --- REVEAL ELEMENTS ---
       const revealElements = document.querySelectorAll(".reveal");
-
+      const options = { threshold: 0.15 };
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -113,9 +119,20 @@
           }
         });
       }, options);
-
       revealElements.forEach(el => observer.observe(el));
 
+      // --- COOKIE BANNER ---
+      const banner = document.getElementById("cookie-banner");
+      const btn = document.getElementById("cookie-accept");
+
+      if (!localStorage.getItem("cookie_notice_accepted")) {
+        banner.classList.add("show");
+      }
+
+      btn.addEventListener("click", function () {
+        localStorage.setItem("cookie_notice_accepted", "yes");
+        banner.classList.remove("show");
+      });
     });
   </script>
 
