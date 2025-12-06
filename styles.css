@@ -547,6 +547,20 @@ footer, .site-footer {
   color: #fff;
 }
 
+/* GLOBO EN */
+.lang-switch {
+  font-weight: 600;
+  color: #FCD34D;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.lang-switch:hover {
+  background: #b38f00;
+  color: #fff;
+}
+
 
 
 
