@@ -561,6 +561,23 @@ footer, .site-footer {
   color: #fff;
 }
 
+/* VIDEO CIRCOLARE */
+video.circular {
+  width: 300px;       /* dimensione quadrata */
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: transform 0.9s ease-out, opacity 0.8s ease-out;
+}
+video.circular.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
 
 
 
