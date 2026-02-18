@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – Veneto Social Media</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: 'Roboto', sans-serif; background: #f5f5f5; margin:0; padding:0; }
+    header, footer { background:#111827; color:#fff; text-align:center; padding:1rem; }
+    main { max-width: 900px; margin: 40px auto; padding: 20px; background:#fff; border-radius:8px; box-shadow:0 2px 12px rgba(0,0,0,0.1); }
+    h1 { text-align:center; color:#111827; margin-bottom:30px; }
+    form { display:flex; flex-direction:column; gap:15px; }
+    input, textarea { padding:10px; border-radius:6px; border:1px solid #ccc; font-size:1rem; width:100%; }
+    button { background:#FCD34D; color:#111827; padding:12px; border:none; border-radius:30px; font-weight:700; cursor:pointer; transition:0.3s; }
+    button:hover { background:#b38f00; color:#fff; }
+    .hidden { display:none; }
+    label { font-weight:500; color:#111827; }
+  </style>
+</head>
+<body>
+  <!-- Header dinamico -->
+  <div id="header"></div>
+
+<main>
+  <!-- Login -->
+  <div id="login-section">
+    <h1>Accedi</h1>
+    <form id="login-form">
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
+      <button type="submit">Accedi</button>
+    </form>
+  </div>
+
+  <!-- Pannello -->
+  <div id="panel-section" class="hidden">
+    <h1>Pannello Cliente</h1>
+    <form id="event-form">
+      <label for="title">Titolo Evento</label>
+      <input type="text" id="title" required>
+      <label for="date">Data Evento</label>
+      <input type="date" id="date" required>
+      <label for="desc">Descrizione</label>
+      <textarea id="desc" rows="4" required></textarea>
+      <label for="image">Carica Immagine</label>
+      <input type="file" id="image" accept="image/*">
+      <button type="submit">Salva Evento</button>
+    </form>
+  </div>
+</main>
+
+<!-- Footer dinamico -->
+<div id="footer"></div>
+
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+  // Credenziali reali già inserite
+  const supabaseUrl = 'https://uoyyobfarvzlyfzhkbyc.supabase.co'
+  const supabaseKey = 'sb_publishable_zD9kxPnoScnSlEbFuFMm0A_1aIrlcbE'
+  const supabase = createClient(supabaseUrl, supabaseKey)
+
+  const loginSection = document.getElementById('login-section')
+  const panelSection = document.getElementById('panel-section')
+
+  // LOGIN
+  document.getElementById('login-form').addEventListener('submit', async (e)=>{
+    e.preventDefault()
+    const email = document.getElementById('email').value
+    const password = document.getElementById('password').value
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+    if(error){ alert(error.message); return }
+    loginSection.classList.add('hidden')
+    panelSection.classList.remove('hidden')
+  })
+
+  // SALVA EVENTO
+  document.getElementById('event-form').addEventListener('submit', async (e)=>{
+    e.preventDefault()
+    const title = document.getElementById('title').value
+    const date = document.getElementById('date').value
+    const desc = document.getElementById('desc').value
+    const imageFile = document.getElementById('image').files[0]
+
+    let imageUrl = ''
+    if(imageFile){
+      const { data, error } = await supabase.storage.from('immagini_eventi').upload(`eventi/${Date.now()}_${imageFile.name}`, imageFile)
+      if(error){ alert(error.message); return }
+      imageUrl = `https://uoyyobfarvzlyfzhkbyc.supabase.co/storage/v1/object/public/immagini_eventi/${data.path}`
+    }
+
+    const { error } = await supabase.from('eventi_cliente').insert([
+      { titolo: title, data: date, descrizione: desc, immagine_url: imageUrl }
+    ])
+    if(error){ alert(error.message); return }
+    alert('Evento salvato con successo!')
+    document.getElementById('event-form').reset()
+  })
+</script>
+
+</body>
+</html>
