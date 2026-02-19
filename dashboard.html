@@ -44,7 +44,7 @@
     margin-bottom: 30px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
-  .card-form input, .card-form textarea, .card-form select {
+  .card-form input, .card-form textarea {
     width: 100%;
     margin-bottom: 12px;
     padding: 10px;
@@ -106,9 +106,7 @@
   <!-- LISTA CARD -->
   <div class="card-list">
     <h2>Elenco Schede</h2>
-    <div id="cardsContainer">
-      <!-- Qui saranno generate dinamicamente le schede -->
-    </div>
+    <div id="cardsContainer"></div>
   </div>
 </main>
 
@@ -116,6 +114,7 @@
   // === FIREBASE CONFIG ===
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
   import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+  import { getFirestore, collection, getDocs, doc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDavwOB1jpD2B-Z-NTZlFJ3kjM9L7kdEYA",
@@ -128,12 +127,12 @@
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth();
+  const db = getFirestore();
 
   // Controllo login
   onAuthStateChanged(auth, user => {
-    if (!user) {
-      window.location.href = 'admin.html'; // rimanda al login se non loggato
-    }
+    if (!user) window.location.href = 'admin.html';
+    else loadCards();
   });
 
   document.getElementById('logoutBtn').addEventListener('click', () => {
@@ -141,24 +140,17 @@
   });
 
   // === CLOUDINARY CONFIG ===
-  const CLOUD_NAME = 'TUO_CLOUD_NAME';
-  const UPLOAD_PRESET = 'TUO_UPLOAD_PRESET'; // unsigned
+  const CLOUD_NAME = 'dwrglcxgh';       // il tuo cloud name Cloudinary
+  const UPLOAD_PRESET = 'ml_default';   // il tuo upload preset Cloudinary
   const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`;
 
-  // === CARICAMENTO CSV (Google Sheet pubblicato come CSV) ===
-  const CSV_URL = 'LINK_PUBBLICO_CSV';
   let cardsData = [];
 
   async function loadCards() {
-    const res = await fetch(CSV_URL);
-    const text = await res.text();
-    const lines = text.split('\n').filter(Boolean);
-    const headers = lines[0].split(',');
-    cardsData = lines.slice(1).map(line => {
-      const values = line.split(',');
-      const obj = {};
-      headers.forEach((h, i) => obj[h.trim()] = values[i].trim());
-      return obj;
+    const querySnapshot = await getDocs(collection(db, "prodotti"));
+    cardsData = [];
+    querySnapshot.forEach(docSnap => {
+      cardsData.push({...docSnap.data(), _docId: docSnap.id});
     });
     renderCards();
   }
@@ -179,12 +171,11 @@
       container.appendChild(div);
     });
 
-    // Pulsanti edit/delete
     document.querySelectorAll('.editBtn').forEach(btn => {
-      btn.addEventListener('click', e => editCard(cardsData[btn.dataset.index]));
+      btn.addEventListener('click', ()=> editCard(cardsData[btn.dataset.index]));
     });
     document.querySelectorAll('.deleteBtn').forEach(btn => {
-      btn.addEventListener('click', e => deleteCard(btn.dataset.index));
+      btn.addEventListener('click', ()=> deleteCard(cardsData[btn.dataset.index]._docId));
     });
   }
 
@@ -192,14 +183,13 @@
     document.getElementById('cardId').value = card.ID;
     document.getElementById('cardTitle').value = card.Title;
     document.getElementById('cardDescription').value = card.Description;
-    document.getElementById('cardLink').value = card.Link;
+    document.getElementById('cardLink').value = card.LinkPagina;
   }
 
-  function deleteCard(index) {
+  async function deleteCard(docId) {
     if (!confirm('Sei sicuro di eliminare questa scheda?')) return;
-    cardsData.splice(index,1);
-    renderCards();
-    alert('Scheda rimossa. Aggiorna il CSV o Google Sheet.');
+    await deleteDoc(doc(db,"prodotti",docId));
+    loadCards();
   }
 
   document.getElementById('saveCardBtn').addEventListener('click', async () => {
@@ -228,18 +218,23 @@
       status.textContent = 'Upload completato!';
     }
 
-    const existingIndex = cardsData.findIndex(c=>c.ID===id);
-    if (existingIndex>=0) {
-      cardsData[existingIndex] = {ID:id, Title:title, Description:desc, Link:link, MediaURL:mediaUrl || cardsData[existingIndex].MediaURL};
-    } else {
-      cardsData.push({ID:id, Title:title, Description:desc, Link:link, MediaURL:mediaUrl});
-    }
+    // Salvataggio su Firestore
+    await setDoc(doc(db,"prodotti",id), {
+      ID: id,
+      Title: title,
+      Description: desc,
+      LinkPagina: link,
+      MediaURL: mediaUrl || ""
+    });
 
-    renderCards();
-    alert('Scheda salvata! Aggiorna il CSV/Google Sheet per rendere effettive le modifiche.');
+    loadCards();
+    alert('Scheda salvata!');
+    document.getElementById('cardId').value='';
+    document.getElementById('cardTitle').value='';
+    document.getElementById('cardDescription').value='';
+    document.getElementById('cardLink').value='';
+    document.getElementById('cardMedia').value='';
   });
-
-  loadCards();
 </script>
 
 </body>
