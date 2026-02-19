@@ -1,105 +1,136 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin – Veneto Social Media</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel – ENMODE SYSTEMS</title>
+
+  <!-- Stili base -->
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: 'Roboto', sans-serif; background: #f5f5f5; margin:0; padding:0; }
-    header, footer { background:#111827; color:#fff; text-align:center; padding:1rem; }
-    main { max-width: 900px; margin: 40px auto; padding: 20px; background:#fff; border-radius:8px; box-shadow:0 2px 12px rgba(0,0,0,0.1); }
-    h1 { text-align:center; color:#111827; margin-bottom:30px; }
-    form { display:flex; flex-direction:column; gap:15px; }
-    input, textarea { padding:10px; border-radius:6px; border:1px solid #ccc; font-size:1rem; width:100%; }
-    button { background:#FCD34D; color:#111827; padding:12px; border:none; border-radius:30px; font-weight:700; cursor:pointer; transition:0.3s; }
-    button:hover { background:#b38f00; color:#fff; }
-    .hidden { display:none; }
-    label { font-weight:500; color:#111827; }
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background-color: #ffffff;
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header, footer { display: none; }
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .login-container {
+      max-width: 400px;
+      width: 100%;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    .login-container h1 { margin-bottom: 25px; font-size: 2rem; color: #111; }
+    .login-container p { margin-bottom: 30px; font-size: 0.95rem; color: #333; }
+    .login-container input {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      color: #111;
+      background-color: #fff;
+    }
+    .login-container input::placeholder { color: #888; }
+    .login-container button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background-color: #00fff0;
+      color: #111;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .login-container button:hover { background-color: #00cfc0; }
+    .error { color: red; margin-bottom: 15px; font-size: 0.9rem; display: none; }
   </style>
 </head>
+
 <body>
-  <!-- Header dinamico -->
-  <div id="header"></div>
+  <main>
+    <div class="login-container">
+      <h1>Admin Panel</h1>
+      <p>Accedi per gestire i moduli del sito</p>
 
-<main>
-  <!-- Login -->
-  <div id="login-section">
-    <h1>Accedi</h1>
-    <form id="login-form">
-      <label for="email">Email</label>
-      <input type="email" id="email" required>
-      <label for="password">Password</label>
-      <input type="password" id="password" required>
-      <button type="submit">Accedi</button>
-    </form>
-  </div>
+      <div class="error" id="errorMsg">Compila tutti i campi!</div>
 
-  <!-- Pannello -->
-  <div id="panel-section" class="hidden">
-    <h1>Pannello Cliente</h1>
-    <form id="event-form">
-      <label for="title">Titolo Evento</label>
-      <input type="text" id="title" required>
-      <label for="date">Data Evento</label>
-      <input type="date" id="date" required>
-      <label for="desc">Descrizione</label>
-      <textarea id="desc" rows="4" required></textarea>
-      <label for="image">Carica Immagine</label>
-      <input type="file" id="image" accept="image/*">
-      <button type="submit">Salva Evento</button>
-    </form>
-  </div>
-</main>
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+      <button id="loginBtn">Accedi</button>
+    </div>
+  </main>
 
-<!-- Footer dinamico -->
-<div id="footer"></div>
+  <!-- Firebase SDK -->
+  <script type="module">
+    // Import SDK Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
-<script type="module">
-  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+    // Config Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDavwOB1jpD2B-Z-NTZlFJ3kjM9L7kdEYA",
+      authDomain: "sito-pietro-sound.firebaseapp.com",
+      projectId: "sito-pietro-sound",
+      storageBucket: "sito-pietro-sound.firebasestorage.app",
+      messagingSenderId: "986860817147",
+      appId: "1:986860817147:web:ed26f6b043f26634313e5e"
+    };
 
-  // Credenziali reali già inserite
-  const supabaseUrl = 'https://uoyyobfarvzlyfzhkbyc.supabase.co'
-  const supabaseKey = 'sb_publishable_zD9kxPnoScnSlEbFuFMm0A_1aIrlcbE'
-  const supabase = createClient(supabaseUrl, supabaseKey)
+    // Inizializza Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-  const loginSection = document.getElementById('login-section')
-  const panelSection = document.getElementById('panel-section')
+    const loginBtn = document.getElementById('loginBtn');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const errorMsg = document.getElementById('errorMsg');
 
-  // LOGIN
-  document.getElementById('login-form').addEventListener('submit', async (e)=>{
-    e.preventDefault()
-    const email = document.getElementById('email').value
-    const password = document.getElementById('password').value
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
-    if(error){ alert(error.message); return }
-    loginSection.classList.add('hidden')
-    panelSection.classList.remove('hidden')
-  })
+    loginBtn.addEventListener('click', () => {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
 
-  // SALVA EVENTO
-  document.getElementById('event-form').addEventListener('submit', async (e)=>{
-    e.preventDefault()
-    const title = document.getElementById('title').value
-    const date = document.getElementById('date').value
-    const desc = document.getElementById('desc').value
-    const imageFile = document.getElementById('image').files[0]
+      if (!email || !password) {
+        errorMsg.textContent = "Compila tutti i campi!";
+        errorMsg.style.display = 'block';
+        return;
+      }
 
-    let imageUrl = ''
-    if(imageFile){
-      const { data, error } = await supabase.storage.from('immagini_eventi').upload(`eventi/${Date.now()}_${imageFile.name}`, imageFile)
-      if(error){ alert(error.message); return }
-      imageUrl = `https://uoyyobfarvzlyfzhkbyc.supabase.co/storage/v1/object/public/immagini_eventi/${data.path}`
-    }
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Login riuscito
+          const user = userCredential.user;
+          console.log("Login riuscito:", user.email);
+          window.location.href = 'dashboard.html';
+        })
+        .catch((error) => {
+          console.error(error);
+          errorMsg.textContent = "Email o password errati!";
+          errorMsg.style.display = 'block';
+        });
+    });
 
-    const { error } = await supabase.from('eventi_cliente').insert([
-      { titolo: title, data: date, descrizione: desc, immagine_url: imageUrl }
-    ])
-    if(error){ alert(error.message); return }
-    alert('Evento salvato con successo!')
-    document.getElementById('event-form').reset()
-  })
-</script>
-
+    emailInput.addEventListener('input', () => errorMsg.style.display = 'none');
+    passwordInput.addEventListener('input', () => errorMsg.style.display = 'none');
+  </script>
 </body>
 </html>
