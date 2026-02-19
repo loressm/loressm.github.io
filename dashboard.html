@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard – ENMODE SYSTEMS</title>
+
+<link rel="stylesheet" href="styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin:0;
+    font-family: 'Share Tech Mono', monospace;
+    background-color: #f5f5f5;
+    color: #111;
+  }
+  header {
+    padding: 20px;
+    background: #00fff0;
+    color: #111;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+  main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  h1 { margin-bottom: 20px; }
+  .logout-btn {
+    float: right;
+    background: #ff5555;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+  .card-form, .card-list {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .card-form input, .card-form textarea, .card-form select {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  .card-form button {
+    padding: 12px 20px;
+    background: #00fff0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  .card-form button:hover { background: #00cfc0; }
+
+  .card-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+  }
+  .card-item:last-child { border-bottom: none; }
+  .card-item button {
+    margin-left: 10px;
+    background: #ff5555;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  Dashboard Admin
+  <button class="logout-btn" id="logoutBtn">Logout</button>
+</header>
+
+<main>
+  <h1>Gestisci Moduli</h1>
+
+  <!-- FORM AGGIUNGI/MODIFICA CARD -->
+  <div class="card-form">
+    <h2>Aggiungi/Modifica Scheda</h2>
+    <input type="text" id="cardId" placeholder="ID (es. 001)">
+    <input type="text" id="cardTitle" placeholder="Titolo Modulo">
+    <textarea id="cardDescription" placeholder="Descrizione"></textarea>
+    <input type="text" id="cardLink" placeholder="Link Pagina">
+    <input type="file" id="cardMedia" accept="image/*,video/*,gif/*">
+    <button id="saveCardBtn">Salva Scheda</button>
+    <div id="uploadStatus" style="margin-top:10px;"></div>
+  </div>
+
+  <!-- LISTA CARD -->
+  <div class="card-list">
+    <h2>Elenco Schede</h2>
+    <div id="cardsContainer">
+      <!-- Qui saranno generate dinamicamente le schede -->
+    </div>
+  </div>
+</main>
+
+<script type="module">
+  // === FIREBASE CONFIG ===
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDavwOB1jpD2B-Z-NTZlFJ3kjM9L7kdEYA",
+    authDomain: "sito-pietro-sound.firebaseapp.com",
+    projectId: "sito-pietro-sound",
+    storageBucket: "sito-pietro-sound.firebasestorage.app",
+    messagingSenderId: "986860817147",
+    appId: "1:986860817147:web:ed26f6b043f26634313e5e"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth();
+
+  // Controllo login
+  onAuthStateChanged(auth, user => {
+    if (!user) {
+      window.location.href = 'admin.html'; // rimanda al login se non loggato
+    }
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    signOut(auth);
+  });
+
+  // === CLOUDINARY CONFIG ===
+  const CLOUD_NAME = 'TUO_CLOUD_NAME';
+  const UPLOAD_PRESET = 'TUO_UPLOAD_PRESET'; // unsigned
+  const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`;
+
+  // === CARICAMENTO CSV (Google Sheet pubblicato come CSV) ===
+  const CSV_URL = 'LINK_PUBBLICO_CSV';
+  let cardsData = [];
+
+  async function loadCards() {
+    const res = await fetch(CSV_URL);
+    const text = await res.text();
+    const lines = text.split('\n').filter(Boolean);
+    const headers = lines[0].split(',');
+    cardsData = lines.slice(1).map(line => {
+      const values = line.split(',');
+      const obj = {};
+      headers.forEach((h, i) => obj[h.trim()] = values[i].trim());
+      return obj;
+    });
+    renderCards();
+  }
+
+  function renderCards() {
+    const container = document.getElementById('cardsContainer');
+    container.innerHTML = '';
+    cardsData.forEach((card,index) => {
+      const div = document.createElement('div');
+      div.className = 'card-item';
+      div.innerHTML = `
+        <div><strong>${card.ID} — ${card.Title}</strong><br>${card.Description}</div>
+        <div>
+          <button data-index="${index}" class="editBtn">Modifica</button>
+          <button data-index="${index}" class="deleteBtn">Elimina</button>
+        </div>
+      `;
+      container.appendChild(div);
+    });
+
+    // Pulsanti edit/delete
+    document.querySelectorAll('.editBtn').forEach(btn => {
+      btn.addEventListener('click', e => editCard(cardsData[btn.dataset.index]));
+    });
+    document.querySelectorAll('.deleteBtn').forEach(btn => {
+      btn.addEventListener('click', e => deleteCard(btn.dataset.index));
+    });
+  }
+
+  function editCard(card) {
+    document.getElementById('cardId').value = card.ID;
+    document.getElementById('cardTitle').value = card.Title;
+    document.getElementById('cardDescription').value = card.Description;
+    document.getElementById('cardLink').value = card.Link;
+  }
+
+  function deleteCard(index) {
+    if (!confirm('Sei sicuro di eliminare questa scheda?')) return;
+    cardsData.splice(index,1);
+    renderCards();
+    alert('Scheda rimossa. Aggiorna il CSV o Google Sheet.');
+  }
+
+  document.getElementById('saveCardBtn').addEventListener('click', async () => {
+    const id = document.getElementById('cardId').value.trim();
+    const title = document.getElementById('cardTitle').value.trim();
+    const desc = document.getElementById('cardDescription').value.trim();
+    const link = document.getElementById('cardLink').value.trim();
+    const mediaFile = document.getElementById('cardMedia').files[0];
+    const status = document.getElementById('uploadStatus');
+
+    if (!id || !title || !desc || !link) {
+      alert('Compila tutti i campi');
+      return;
+    }
+
+    let mediaUrl = '';
+    if (mediaFile) {
+      const formData = new FormData();
+      formData.append('file', mediaFile);
+      formData.append('upload_preset', UPLOAD_PRESET);
+
+      status.textContent = 'Caricamento media...';
+      const res = await fetch(cloudinaryUrl, { method: 'POST', body: formData });
+      const data = await res.json();
+      mediaUrl = data.secure_url;
+      status.textContent = 'Upload completato!';
+    }
+
+    const existingIndex = cardsData.findIndex(c=>c.ID===id);
+    if (existingIndex>=0) {
+      cardsData[existingIndex] = {ID:id, Title:title, Description:desc, Link:link, MediaURL:mediaUrl || cardsData[existingIndex].MediaURL};
+    } else {
+      cardsData.push({ID:id, Title:title, Description:desc, Link:link, MediaURL:mediaUrl});
+    }
+
+    renderCards();
+    alert('Scheda salvata! Aggiorna il CSV/Google Sheet per rendere effettive le modifiche.');
+  });
+
+  loadCards();
+</script>
+
+</body>
+</html>
