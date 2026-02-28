@@ -1,0 +1,425 @@
+/* Reset e base */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: 'Arial', sans-serif; background:#fff; color:#333; line-height:1.6; scroll-behavior: smooth;}
+.container {width:90%; max-width:1200px; margin:0 auto;}
+
+/* Header */
+header {background:#fff; position:fixed; top:0; width:100%; z-index:1000; box-shadow:0 2px 5px rgba(0,0,0,0.05);}
+.header-container {display:flex; justify-content:space-between; align-items:center; padding:1rem 0;}
+.logo h1 {font-size:1.5rem; color:#0077b6; font-weight:700;}
+
+/* Hamburger menu */
+.hamburger {display:flex; flex-direction:column; justify-content:space-between; width:25px; height:18px; cursor:pointer; z-index:1100;}
+.hamburger span {height:3px; background:#0077b6; border-radius:2px; transition: all 0.3s;}
+
+/* Hamburger active animation */
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+/* Nav menu base */
+.nav-menu {
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:70%;
+  height:100%;
+  background:#f8f9fa;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  transition:right 0.3s;
+  box-shadow:-2px 0 5px rgba(0,0,0,0.1);
+  padding-left:20px;
+}
+
+.nav-menu.active {right:0;}
+.nav-menu ul {list-style:none;}
+
+/* Contenitore principale spina + voci */
+.menu-content {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  width:100%;
+}
+
+/* Sinistra: spina dorsale */
+.menu-left {
+  flex:0 0 60px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.spina {
+  width:40px;
+  height:70%;
+  object-fit:contain;
+}
+
+/* Destra: voci menu */
+.menu-right {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:1.8rem;
+  padding-left:10px;
+}
+
+.menu-right li {
+  display:flex;
+  align-items:center;
+}
+
+.menu-right a {
+  font-size:1.3rem;
+  font-weight:500;
+  color:#0077b6;
+  text-decoration:none;
+  transition:color 0.3s;
+}
+
+.menu-right a:hover {
+  color:#023047;
+}
+
+/* Puntino vertebra */
+.vertebra {
+  width:10px;
+  height:10px;
+  background:#0077b6;
+  border-radius:50%;
+  margin-right:12px;
+  transform:scale(1);
+  transition:transform 0.3s ease;
+}
+
+/* Vertebre/puntini menu */
+.nav-menu .vertebra {
+  width:10px;
+  height:10px;
+  background:#0077b6;
+  border-radius:50%;
+  margin-right:12px;
+  visibility:hidden; /* nascosto di default */
+}
+
+/* Keyframe comparsa a scatto */
+@keyframes vertebraAppear {
+  to { visibility: visible; }
+}
+
+/* Icona WhatsApp come voce menu */
+.menu-whatsapp-item img {
+  width:28px;
+  height:28px;
+  object-fit:contain;
+  cursor:pointer;
+  transition: transform 0.2s ease;
+}
+
+.menu-whatsapp-item img:hover {
+  transform: scale(1.15);
+}
+
+/* LOGO in cima al menu */
+.menu-top-logo {
+  width:100%;
+  text-align:center;
+  padding:2rem 0 1rem 0;
+}
+
+.menu-top-logo a {
+  text-decoration:none;
+  display:inline-block;
+}
+
+.menu-top-logo h1 {
+  font-size:1.5rem;
+  font-weight:700;
+  color:#0077b6;
+}
+
+.menu-top-logo h1:hover {
+  color:#023047;
+}
+
+.menu-top-logo .underline {
+  display:block;
+  width:50%;
+  max-width:80px;
+  height:2px;
+  background:#0077b6;
+  margin:0.3rem auto 0 auto;
+  border-radius:1px;
+}
+
+/* Hero */
+.hero {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:90vh;
+  text-align:center;
+  padding:0 1rem;
+  background: url('img/banner-studiomed.png') center/cover no-repeat;
+  position: relative;
+  color:#fff;
+}
+
+.hero-overlay {
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.35);
+  z-index:1;
+}
+
+.hero-content {
+  position:relative;
+  z-index:2;
+}
+
+/* Sezioni */
+.servizi {padding:5rem 0; text-align:center;}
+.servizi h2 {color:#0077b6; margin-bottom:2rem; font-size:2rem;}
+.servizi-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem;}
+.servizio {padding:2rem; border:1px solid #ddd; border-radius:10px; background:#f8f9fa; transition: transform 0.4s, box-shadow 0.4s;}
+.servizio:hover {transform: translateY(-8px); box-shadow:0 10px 20px rgba(0,0,0,0.1);}
+
+.chi-siamo, .contatti {padding:4rem 0; text-align:center;}
+.chi-siamo h2, .contatti h2 {color:#0077b6; margin-bottom:1rem; font-size:2rem;}
+.chi-siamo p, .contatti p {max-width:700px; margin:0 auto; color:#333; font-size:1.1rem;}
+
+/* Contatti */
+.contatti-container {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2rem;
+}
+
+.modulo-contatti {
+  background:#f9f9f9;
+  padding:2.5rem;
+  border-radius:12px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.05);
+  width:90%;
+  max-width:700px;
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+}
+
+.modulo-contatti input,
+.modulo-contatti textarea {
+  width:100%;
+  padding:0.8rem 1rem;
+  border:1px solid #ccc;
+  border-radius:8px;
+}
+
+.modulo-contatti button {
+  padding:0.8rem 1.8rem;
+  background-color:#0077b6;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.modulo-contatti button:hover {
+  background-color:#005f87;
+}
+
+/* Footer */
+footer {background:#f8f9fa; padding:2rem 0; text-align:center;}
+footer .social a {margin:0 0.5rem; color:#0077b6;}
+footer .social a:hover {color:#023047;}
+
+/* Responsive */
+@media(max-width:768px){
+  .nav-menu {
+    width:80%;
+    flex-direction:column;
+    align-items:center;
+    padding-left:0;
+    padding-top:80px; /* ⬅️ aggiungi questa riga */
+  }
+
+  .menu-content {
+    justify-content:center;
+    padding-left:0;
+  }
+
+  .hero h1 {font-size:2rem;}
+}
+
+/* SERVIZI */
+.servizi {
+  padding:6rem 2rem;
+  text-align:center;
+  background:#fefefe;
+}
+
+.servizi h2 {
+  color:#0077b6;
+  margin-bottom:3rem;
+  font-size:2.2rem;
+  font-weight:700;
+}
+
+.servizi-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:2.5rem;
+}
+
+.servizio {
+  background:#fff;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor:default;
+}
+
+.servizio:hover {
+  transform: translateY(-10px);
+  box-shadow:0 15px 25px rgba(0,0,0,0.15);
+}
+
+.servizio img {
+  width:100%;
+  height:300px; /* coerente con le immagini 400x300 px */
+  object-fit:cover;
+  transition: transform 0.4s ease;
+}
+
+.servizio:hover img {
+  transform: scale(1.05);
+}
+
+.servizio h3 {
+  color:#0077b6;
+  font-size:1.3rem;
+  font-weight:600;
+  margin:1rem 1rem 0.5rem 1rem;
+}
+
+.servizio p {
+  font-size:1rem;
+  color:#333;
+  line-height:1.5;
+  margin:0 1rem 1.5rem 1rem;
+}
+
+/* Fade-in e apparizione singola per le card */
+.servizio {
+  opacity:0;
+  transform:translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.servizio.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Chi siamo */
+.chi-siamo {
+  padding:6rem 2rem;
+  background:#f8f9fa;
+}
+
+.chi-siamo-container {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:3rem;
+  flex-wrap:wrap;
+}
+
+.chi-siamo-video {
+  flex:0 0 300px;
+  height:300px;
+  border-radius:50%;
+  overflow:hidden;
+  box-shadow:0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.chi-siamo-video video {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.chi-siamo-video:hover {
+  transform: scale(1.05);
+}
+
+.chi-siamo-testo {
+  flex:1;
+  max-width:600px;
+  text-align:left;
+}
+
+.chi-siamo h2 {
+  color:#0077b6;
+  font-size:2rem;
+  margin-bottom:1.5rem;
+}
+
+.chi-siamo p {
+  font-size:1.1rem;
+  color:#333;
+  line-height:1.6;
+  margin-bottom:1rem;
+}
+
+/* Fade-in per testo e video */
+.chi-siamo-video,
+.chi-siamo-testo {
+  opacity:0;
+  transform:translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.chi-siamo-video.visible,
+.chi-siamo-testo.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .chi-siamo-container {
+    flex-direction:column;
+    gap:2rem;
+  }
+  .chi-siamo-testo {
+    text-align:center;
+  }
+}
+
+/* Footer social icons */
+footer .social a {
+  display: inline-block;
+  margin: 0 0.5rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+footer .social a img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* Hover effect: ingrandimento leggero e leggero cambio opacità */
+footer .social a:hover {
+  transform: scale(1.2);
+  opacity: 0.85;
+}

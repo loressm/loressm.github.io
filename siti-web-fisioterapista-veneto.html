@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nome Studio Medico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header statico -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <h1>Nome Studio Medico</h1>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav id="nav-menu" class="nav-menu">
+        <div class="menu-top-logo">
+          <a href="siti-web-fisioterapista-veneto.html">
+            <h1>Nome Studio Medico</h1>
+            <span class="underline"></span>
+          </a>
+        </div>
+
+        <div class="menu-content">
+          <div class="menu-left">
+            <img src="img/spina.svg" alt="Spina dorsale menu" class="spina">
+          </div>
+          <ul class="menu-right">
+            <li><span class="vertebra"></span><a href="#servizi">Servizi</a></li>
+            <li><span class="vertebra"></span><a href="#chi-siamo">Chi siamo</a></li>
+            <li><span class="vertebra"></span><a href="#contatti">Contatti</a></li>
+            <li class="menu-whatsapp-item">
+              <span class="vertebra"></span>
+              <a href="https://wa.me/1234567890" target="_blank">
+                <img src="img/logo-whatsapp.png" alt="WhatsApp">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Il tuo percorso riabilitativo in buone mani</h1>
+      <p>Professionalità, attenzione e serenità per la tua salute fisica.</p>
+    </div>
+  </section>
+
+  <!-- Servizi -->
+  <section id="servizi" class="servizi fade-in">
+    <h2>I nostri servizi</h2>
+    <div class="servizi-grid">
+      <div class="servizio">
+        <img src="img/servizio1.png" alt="Rieducazione motoria">
+        <h3>Rieducazione motoria</h3>
+        <p>Allenamenti mirati per muoversi meglio e recuperare agilità.</p>
+      </div>
+      <div class="servizio">
+        <img src="img/servizio2.png" alt="Recupero da infortuni">
+        <h3>Recupero da infortuni</h3>
+        <p>Supporto dopo traumi o incidenti per tornare in forma rapidamente.</p>
+      </div>
+      <div class="servizio">
+        <img src="img/servizio3.png" alt="Esercizi posturali">
+        <h3>Esercizi posturali</h3>
+        <p>Migliora la postura e previeni dolori muscolari con esercizi mirati.</p>
+      </div>
+      <div class="servizio">
+        <img src="img/servizio4.png" alt="Massaggi terapeutici">
+        <h3>Massaggi terapeutici</h3>
+        <p>Trattamenti professionali per ridurre tensioni e dolori muscolari.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chi siamo -->
+  <section id="chi-siamo" class="chi-siamo fade-in">
+    <div class="chi-siamo-container">
+      <div class="chi-siamo-video">
+        <video autoplay muted loop playsinline>
+          <source src="img/video.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="chi-siamo-testo">
+        <h2>Chi siamo</h2>
+        <p>
+          Siamo uno studio dedicato al tuo benessere fisico, con professionisti esperti e un approccio attento e personalizzato.
+          <strong>Ogni paziente è unico</strong>: la nostra missione è <strong>accompagnarti verso il recupero</strong> con competenza e gentilezza.
+        </p>
+        <p>
+          Da anni aiutiamo persone di tutte le età a muoversi meglio e a sentirsi più sicure e serene nel proprio corpo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contatti -->
+  <section id="contatti" class="contatti fade-in">
+    <h2>Contatti</h2>
+    <div class="contatti-container">
+      <div class="mappa">
+        <iframe 
+          width="100%" 
+          height="350" 
+          src="https://www.openstreetmap.org/export/embed.html?bbox=11.877347230911257%2C45.41682305774631%2C11.879857778549196%2C45.418095789443825&amp;layer=mapnik&amp;marker=45.417459%2C11.878603" 
+          style="border:1px solid #0077b6; border-radius:10px;" 
+          allowfullscreen>
+        </iframe>
+        <p style="margin-top:0.5rem; font-style:italic; color:#0077b6; font-weight:700; font-size:1.1rem;">
+          📍 Siamo a soli 60 secondi dalla stazione di Padova
+        </p>
+        <small>
+          <a href="https://www.openstreetmap.org/?mlat=45.417459&mlon=11.878603#map=19/45.417459/11.878603" target="_blank" style="color:#023047;">
+            Visualizza mappa ingrandita
+          </a>
+        </small>
+      </div>
+
+      <div class="modulo-contatti">
+        <form>
+          <label for="nome">Nome</label><br>
+          <input type="text" id="nome" name="nome" placeholder="Il tuo nome"><br>
+
+          <label for="email">Email</label><br>
+          <input type="email" id="email" name="email" placeholder="La tua email"><br>
+
+          <label for="messaggio">Messaggio</label><br>
+          <textarea id="messaggio" name="messaggio" rows="5" placeholder="Scrivi qui il tuo messaggio"></textarea><br>
+
+          <button type="submit">Invia</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer statico -->
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2026 Nome Studio Medico. Tutti i diritti riservati.</p>
+      <div class="social">
+        <a href="https://www.facebook.com/" target="_blank">
+          <img src="img/logo-fb.png" alt="Facebook" width="28" height="28">
+        </a>
+        <a href="https://wa.me/1234567890" target="_blank">
+          <img src="img/logo-whatsapp.png" alt="WhatsApp" width="28" height="28">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="script-fisio.js"></script>
+</body>
+</html>
