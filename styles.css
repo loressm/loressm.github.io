@@ -621,7 +621,29 @@ video.circular.visible {
   border-radius: 6px;
 }
 
+/* Lista vantaggi con spunta ✔ su sfondo verde */
+.content-item ul li {
+  position: relative;
+  padding-left: 35px; /* spazio per la spunta */
+  margin-bottom: 12px;
+  font-weight: 500;
+}
 
+.content-item ul li::before {
+  content: "✔";       /* la spunta */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  background-color: #28A745; /* verde classico */
+  color: white;               /* ✔ bianco */
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 24px;          /* centra verticalmente la spunta */
+  border-radius: 4px;         /* leggermente arrotondato */
+}
 
 
 
