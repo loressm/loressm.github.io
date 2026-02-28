@@ -578,25 +578,48 @@ video.circular.visible {
   transform: scale(1);
 }
 
-/* SOTTO MENU */
+/* --- SOTTOMENU STILE COMPLETO --- */
+.nav-menu .has-submenu {
+  position: relative; /* necessario per posizionamento submenu */
+}
+
 .nav-menu .submenu {
   display: none;
   position: absolute;
-  background: white;
+  top: 100%; /* subito sotto il menu principale */
+  left: 0;
+  background: #ffffff; /* bianco per contrasto leggibile */
+  border-radius: 8px; /* angoli arrotondati */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15); /* ombra elegante */
   list-style: none;
-  padding: 0;
+  padding: 8px 0; /* padding verticale interno */
+  min-width: 220px; /* più largo per leggibilità */
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .nav-menu .has-submenu:hover .submenu {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .submenu li a {
   padding: 10px 20px;
   display: block;
-  white-space: nowrap;
+  color: #111827; /* colore testo principale del sito */
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
+.submenu li a:hover {
+  background-color: #FCD34D; /* oro come pulsanti e dettagli */
+  color: #111827; /* testo scuro sul giallo */
+  border-radius: 6px;
+}
 
 
 
