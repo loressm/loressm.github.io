@@ -1,5 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // --- SOTTOMENU MOBILE ---
+  // =========================
+  // CARICAMENTO HEADER E FOOTER DINAMICI
+  // =========================
+  // Header
+  fetch("header.html")
+    .then(res => res.text())
+    .then(data => {
+      const header = document.getElementById("header");
+      if (header) {
+        header.innerHTML = data;
+
+        // Hamburger menu dopo il caricamento
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("nav-menu");
+        if (hamburger && navMenu) {
+          hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+          });
+        }
+      }
+    });
+
+  // Footer
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(data => {
+      const footer = document.getElementById("footer");
+      if (footer) footer.innerHTML = data;
+    });
+
+  // =========================
+  // SOTTOMENU MOBILE
+  // =========================
   document.querySelectorAll('.submenu-toggle').forEach(toggle => {
     toggle.addEventListener('click', e => {
       e.preventDefault();
@@ -8,7 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // --- CONTATORE ---
+  // =========================
+  // CONTATORE
+  // =========================
   const counterElement = document.getElementById("counter");
   const targetValue = 135;
   let current = 0;
@@ -35,7 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(counterElement);
   }
 
-  // --- HAMBURGER MOBILE ---
+  // =========================
+  // HAMBURGER MOBILE (extra, se header già caricato)
+  // =========================
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');
   if (hamburger && navMenu) {
@@ -45,7 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // --- REVEAL ELEMENTS (se già lo vuoi qui dentro) ---
+  // =========================
+  // REVEAL ELEMENTS
+  // =========================
   const revealElements = document.querySelectorAll(".reveal");
   const options = { threshold: 0.15 };
   const observerReveal = new IntersectionObserver((entries, observer) => {
